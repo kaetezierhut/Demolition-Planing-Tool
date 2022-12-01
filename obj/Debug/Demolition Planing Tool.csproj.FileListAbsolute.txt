@@ -1,0 +1,12 @@
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.csproj.AssemblyReference.cache
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.csproj.SuggestedBindingRedirects.cache
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.Properties.Resources.resources
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.csproj.GenerateResource.cache
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.csproj.CoreCompileInputs.cache
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\bin\Debug\Demolition Planing Tool.exe.config
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\bin\Debug\Demolition Planing Tool.exe
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\bin\Debug\Demolition Planing Tool.pdb
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.exe
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.pdb
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.ComputeForm.resources
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.IntroForm.resources

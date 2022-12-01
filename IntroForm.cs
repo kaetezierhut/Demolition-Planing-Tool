@@ -10,16 +10,22 @@ using System.Windows.Forms;
 
 namespace Demolition_Planing_Tool
 {
-    public partial class Form1 : Form
+    public partial class IntroForm : Form
     {
-        public Form1()
+        public IntroForm()
         {
             InitializeComponent();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ComputeForm cf = new ComputeForm();
+            cf.ShowDialog();
         }
     }
 }
