@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Demolition_Planing_Tool
 {
@@ -15,9 +17,13 @@ namespace Demolition_Planing_Tool
         {
             this.buildingName = buildingName;
             floors = new List<Floor>(nrFloors);
+            for (var i = 0; i < nrFloors; i++)
+            {
+                floors.Add(new Floor());
+            }
             foreach (Floor floor in floors)
             {
-                floor.addRoom(nrRoomsPerFloor);
+                floor.AddRoom(nrRoomsPerFloor);
             }
         }
 
@@ -25,6 +31,11 @@ namespace Demolition_Planing_Tool
         {
             get { return buildingName; }
             set { buildingName = value; }
+        }
+        
+        public List<Floor> GetFloors()
+        {
+            return floors;
         }
     }
 }

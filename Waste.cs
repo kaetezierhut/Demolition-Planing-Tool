@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
-    public abstract class Waste
+    public class Waste
     {
         private string wasteID;
         private double billing;
         private bool roomExclusive = true;
         private string unit;
         private int quantities;
+        
+        public Waste(string wasteID, int quatities)
+        {
+            this.wasteID = wasteID;
+            quantities = quatities;
+            var wasteValue = WasteData.wasteData[wasteID];
+            billing = double.Parse(wasteValue[1], System.Globalization.CultureInfo.InvariantCulture);
+            unit = wasteValue[2];
+            roomExclusive = bool.Parse(wasteValue[3]);
+        }
 
         public string WasteID
         { 

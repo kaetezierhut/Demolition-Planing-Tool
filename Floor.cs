@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
-    internal class Floor
+    public class Floor
     {
         private List<Waste> floorWaste;
         private List<Room> rooms;
         public Floor() 
         {
             rooms = new List<Room>();
+            floorWaste = new List<Waste>();
         }
 
-        public double computeBillingFloor()
+        public double ComputeBillingFloor()
         {
             double billingFloor = 0;
 
@@ -32,12 +33,21 @@ namespace Demolition_Planing_Tool
             return billingFloor;
         }
 
-        public void addRoom(int nrRoomsPerFloor)
+        public void AddRoom(int nrRoomsPerFloor)
         {
             for (int i = 0; i < nrRoomsPerFloor; i++)
             {
                 rooms.Add(new Room());
             }
         }
+
+        public void AddWaste(Waste waste)
+        {
+            floorWaste.Add(waste);
+        }
+
+        public List<Room> GetRooms() { return rooms; }
+
+        public List<Waste> GetWasteList() { return floorWaste; }
     }
 }

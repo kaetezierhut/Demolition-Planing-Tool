@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
-    internal class Room
+    public class Room
     {
         private List<Waste> roomWaste;
 
@@ -21,6 +22,13 @@ namespace Demolition_Planing_Tool
             }
             return billingRoom;
         }
+
+        public void addWaste(Waste waste) 
+        {
+            roomWaste.Add(waste);
+        }
+
+        public List<Waste> getRoomWaste() { return roomWaste; }
 
     }
 }
