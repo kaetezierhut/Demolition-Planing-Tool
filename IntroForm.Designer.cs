@@ -35,8 +35,8 @@
             this.BuildingNameBox = new System.Windows.Forms.TextBox();
             this.NumberFloorBox = new System.Windows.Forms.TextBox();
             this.NumberRoomPerFloorBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.StartPlanningButton = new System.Windows.Forms.Button();
+            this.LoadPlanButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
@@ -90,25 +90,25 @@
             this.NumberRoomPerFloorBox.TabIndex = 5;
             this.NumberRoomPerFloorBox.Text = "0";
             // 
-            // button1
+            // StartPlanningButton
             // 
-            this.button1.Location = new System.Drawing.Point(392, 264);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Start Planning";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.StartPlanningButton.Location = new System.Drawing.Point(392, 264);
+            this.StartPlanningButton.Name = "StartPlanningButton";
+            this.StartPlanningButton.Size = new System.Drawing.Size(100, 23);
+            this.StartPlanningButton.TabIndex = 6;
+            this.StartPlanningButton.Text = "Start Planning";
+            this.StartPlanningButton.UseVisualStyleBackColor = true;
+            this.StartPlanningButton.Click += new System.EventHandler(this.StartPlanningButton_Click);
             // 
-            // button2
+            // LoadPlanButton
             // 
-            this.button2.Location = new System.Drawing.Point(392, 331);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Load Plan";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.LoadPlanButton.Location = new System.Drawing.Point(392, 331);
+            this.LoadPlanButton.Name = "LoadPlanButton";
+            this.LoadPlanButton.Size = new System.Drawing.Size(100, 23);
+            this.LoadPlanButton.TabIndex = 7;
+            this.LoadPlanButton.Text = "Load Plan";
+            this.LoadPlanButton.UseVisualStyleBackColor = true;
+            this.LoadPlanButton.Click += new System.EventHandler(this.LoadPlanButton_Click);
             // 
             // openFileDialog1
             // 
@@ -119,8 +119,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.LoadPlanButton);
+            this.Controls.Add(this.StartPlanningButton);
             this.Controls.Add(this.NumberRoomPerFloorBox);
             this.Controls.Add(this.NumberFloorBox);
             this.Controls.Add(this.BuildingNameBox);
@@ -143,8 +143,8 @@
         private System.Windows.Forms.TextBox BuildingNameBox;
         private System.Windows.Forms.TextBox NumberFloorBox;
         private System.Windows.Forms.TextBox NumberRoomPerFloorBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button StartPlanningButton;
+        private System.Windows.Forms.Button LoadPlanButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

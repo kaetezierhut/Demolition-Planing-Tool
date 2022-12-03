@@ -33,16 +33,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.WasteIDComboBox = new System.Windows.Forms.ComboBox();
-            this.addQuantities = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddQuantitiesButton = new System.Windows.Forms.Button();
+            this.SaveCurrentPlanButton = new System.Windows.Forms.Button();
             this.PlaceHolderName = new System.Windows.Forms.Label();
             this.FloorNumberComboBox = new System.Windows.Forms.ComboBox();
             this.RoomNumberComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.FloorCheckBox = new System.Windows.Forms.CheckBox();
             this.RoomCheckBox = new System.Windows.Forms.CheckBox();
@@ -96,25 +96,25 @@
             this.WasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.WasteIDComboBox.TabIndex = 9;
             // 
-            // addQuantities
+            // AddQuantitiesButton
             // 
-            this.addQuantities.Location = new System.Drawing.Point(6, 181);
-            this.addQuantities.Name = "addQuantities";
-            this.addQuantities.Size = new System.Drawing.Size(117, 23);
-            this.addQuantities.TabIndex = 11;
-            this.addQuantities.Text = "Add Quantities";
-            this.addQuantities.UseVisualStyleBackColor = true;
-            this.addQuantities.Click += new System.EventHandler(this.button3_Click);
+            this.AddQuantitiesButton.Location = new System.Drawing.Point(6, 181);
+            this.AddQuantitiesButton.Name = "AddQuantitiesButton";
+            this.AddQuantitiesButton.Size = new System.Drawing.Size(117, 23);
+            this.AddQuantitiesButton.TabIndex = 11;
+            this.AddQuantitiesButton.Text = "Add Quantities";
+            this.AddQuantitiesButton.UseVisualStyleBackColor = true;
+            this.AddQuantitiesButton.Click += new System.EventHandler(this.AddQuantitiesButton_Click);
             // 
-            // button1
+            // SaveCurrentPlanButton
             // 
-            this.button1.Location = new System.Drawing.Point(647, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Save Current Plan";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.SaveCurrentPlanButton.Location = new System.Drawing.Point(647, 401);
+            this.SaveCurrentPlanButton.Name = "SaveCurrentPlanButton";
+            this.SaveCurrentPlanButton.Size = new System.Drawing.Size(141, 23);
+            this.SaveCurrentPlanButton.TabIndex = 12;
+            this.SaveCurrentPlanButton.Text = "Save Current Plan";
+            this.SaveCurrentPlanButton.UseVisualStyleBackColor = true;
+            this.SaveCurrentPlanButton.Click += new System.EventHandler(this.SaveCurrentPlanButton_Click);
             // 
             // PlaceHolderName
             // 
@@ -160,9 +160,9 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Floor Number";
             // 
-            // saveFileDialog1
+            // SaveFileDialog
             // 
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            this.SaveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog_FileOk);
             // 
             // listBox1
             // 
@@ -172,15 +172,15 @@
             this.listBox1.Size = new System.Drawing.Size(519, 251);
             this.listBox1.TabIndex = 18;
             // 
-            // button2
+            // DeleteButton
             // 
-            this.button2.Location = new System.Drawing.Point(269, 343);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 24);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Delete Item";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.DeleteButton.Location = new System.Drawing.Point(269, 343);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(134, 24);
+            this.DeleteButton.TabIndex = 19;
+            this.DeleteButton.Text = "Delete Item";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // button3
             // 
@@ -213,7 +213,7 @@
             this.RoomCheckBox.TabIndex = 22;
             this.RoomCheckBox.Text = "Room";
             this.RoomCheckBox.UseVisualStyleBackColor = true;
-            this.RoomCheckBox.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.RoomCheckBox.CheckedChanged += new System.EventHandler(this.RoomCheckBox_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -223,7 +223,7 @@
             this.groupBox1.Controls.Add(this.FloorCheckBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.RoomNumberComboBox);
-            this.groupBox1.Controls.Add(this.addQuantities);
+            this.groupBox1.Controls.Add(this.AddQuantitiesButton);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.WasteIDComboBox);
             this.groupBox1.Controls.Add(this.QuantitiesTextBox);
@@ -273,10 +273,10 @@
             this.Controls.Add(this.ComputeTotalCost);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.PlaceHolderName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SaveCurrentPlanButton);
             this.Controls.Add(this.label3);
             this.Name = "ComputeForm";
             this.Text = "Demolition Planning Tool";
@@ -295,16 +295,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox WasteIDComboBox;
-        private System.Windows.Forms.Button addQuantities;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddQuantitiesButton;
+        private System.Windows.Forms.Button SaveCurrentPlanButton;
         private System.Windows.Forms.Label PlaceHolderName;
         private System.Windows.Forms.ComboBox FloorNumberComboBox;
         private System.Windows.Forms.ComboBox RoomNumberComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox FloorCheckBox;
         private System.Windows.Forms.CheckBox RoomCheckBox;

@@ -18,7 +18,7 @@ namespace Demolition_Planing_Tool
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void StartPlanningButton_Click(object sender, EventArgs e)
         {
             string buildingName = BuildingNameBox.Text;
             int numberOfFloors = 0;
@@ -62,7 +62,8 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // Load previous work
+        private void LoadPlanButton_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
         }

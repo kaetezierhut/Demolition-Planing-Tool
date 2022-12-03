@@ -22,19 +22,18 @@ namespace Demolition_Planing_Tool
             InitializeComponent();            
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void SaveCurrentPlanButton_Click(object sender, EventArgs e)
         {
-            DialogResult dr = saveFileDialog1.ShowDialog();
+            DialogResult dr = SaveFileDialog.ShowDialog();
             MessageBox.Show("Saved Data"); 
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void SaveFileDialog_FileOk(object sender, CancelEventArgs e)
         {
 
         }
 
-        // Delete Button
-        private void button2_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -61,8 +60,7 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        // Add Quantities
-        private void button3_Click(object sender, EventArgs e)
+        private void AddQuantitiesButton_Click(object sender, EventArgs e)
         {
             if (FloorCheckBox.Checked)
             {
@@ -169,7 +167,7 @@ namespace Demolition_Planing_Tool
         }
 
         // Room checkBox
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void RoomCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             FloorNumberComboBox.Enabled = true;
             if (RoomCheckBox.Checked) 
