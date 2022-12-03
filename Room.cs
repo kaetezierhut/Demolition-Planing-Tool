@@ -13,7 +13,7 @@ namespace Demolition_Planing_Tool
 
         public Room() { roomWaste = new List<Waste>();}
 
-        public double computeBillingRoom()
+        public double ComputeBillingRoom()
         {
             double billingRoom = 0;
             foreach (Waste w in roomWaste)
@@ -23,9 +23,14 @@ namespace Demolition_Planing_Tool
             return billingRoom;
         }
 
-        public void addWaste(Waste waste) 
+        public void AddWaste(Waste waste) 
         {
             roomWaste.Add(waste);
+        }
+
+        public void RemoveWaste(Waste waste)
+        {
+            roomWaste.Remove(waste);
         }
 
         public List<Waste> getRoomWaste() { return roomWaste; }

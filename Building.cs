@@ -37,5 +37,20 @@ namespace Demolition_Planing_Tool
         {
             return floors;
         }
+
+        public Floor GetIndividualFloor(int index)
+        {
+            return floors[index];
+        }
+
+        public double ComputeBillingBuilding()
+        {
+            double billingBuilding = 0;
+            foreach (Floor floor in floors)
+            {
+                billingBuilding += floor.ComputeBillingFloor();
+            }
+            return billingBuilding;
+        }
     }
 }

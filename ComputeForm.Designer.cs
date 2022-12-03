@@ -95,7 +95,6 @@
             this.WasteIDComboBox.Name = "WasteIDComboBox";
             this.WasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.WasteIDComboBox.TabIndex = 9;
-            this.WasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // addQuantities
             // 
@@ -133,7 +132,6 @@
             this.FloorNumberComboBox.Name = "FloorNumberComboBox";
             this.FloorNumberComboBox.Size = new System.Drawing.Size(121, 21);
             this.FloorNumberComboBox.TabIndex = 14;
-            this.FloorNumberComboBox.DropDown += new System.EventHandler(this.FloorNumberComboBox_DropDown);
             // 
             // RoomNumberComboBox
             // 
@@ -152,7 +150,6 @@
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 16;
             this.label5.Text = "Room Number";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -246,6 +243,7 @@
             this.ComputeTotalCost.TabIndex = 24;
             this.ComputeTotalCost.Text = "Compute Total Cost";
             this.ComputeTotalCost.UseVisualStyleBackColor = true;
+            this.ComputeTotalCost.Click += new System.EventHandler(this.ComputeTotalCost_Click);
             // 
             // label7
             // 

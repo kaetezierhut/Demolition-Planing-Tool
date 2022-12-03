@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Demolition_Planing_Tool
         private double billing;
         private bool roomExclusive = true;
         private string unit;
-        private int quantities;
+        private int quantities = 0;
         
         public Waste(string wasteID, int quatities)
         {

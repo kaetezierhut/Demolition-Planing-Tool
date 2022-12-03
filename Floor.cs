@@ -22,7 +22,7 @@ namespace Demolition_Planing_Tool
 
             foreach (Room room in rooms)
             {
-                billingFloor += room.computeBillingRoom();
+                billingFloor += room.ComputeBillingRoom();
             }
 
             foreach (Waste waste in floorWaste)
@@ -46,8 +46,18 @@ namespace Demolition_Planing_Tool
             floorWaste.Add(waste);
         }
 
-        public List<Room> GetRooms() { return rooms; }
+        public void RemoveWaste(Waste waste)
+        {
+            floorWaste.Remove(waste);
+        }
+
+        public List<Room> GetRoomsList() { return rooms; }
 
         public List<Waste> GetWasteList() { return floorWaste; }
+
+        public Room GetRoom(int id)
+        {
+            return rooms[id];
+        }
     }
 }
