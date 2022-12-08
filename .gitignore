@@ -400,3 +400,5 @@ obj/Debug/Demolition Planing Tool.csproj.GenerateResource.cache
 .vs/Demolition Planing Tool/v17/.suo
 *.cache
 *.pdb
+*.cache
+*.pdb

@@ -136,7 +136,7 @@ namespace Demolition_Planing_Tool
                                 }
                             }
 
-                            Waste waste = new Waste(WasteIDComboBox.SelectedText, quantities);
+                            Waste waste = new Waste(WasteIDComboBox.Text, quantities);
                             var floorIndex = FloorNumberComboBox.SelectedIndex;
                             var selectedFloor = building.GetIndividualFloor(floorIndex);
                             var roomIndex = RoomNumberComboBox.SelectedIndex;
@@ -166,7 +166,6 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        // Room checkBox
         private void RoomCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             FloorNumberComboBox.Enabled = true;
