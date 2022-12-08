@@ -43,7 +43,7 @@
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ExportPDFButton = new System.Windows.Forms.Button();
             this.FloorCheckBox = new System.Windows.Forms.CheckBox();
             this.RoomCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -182,14 +182,15 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // button3
+            // ExportPDFButton
             // 
-            this.button3.Location = new System.Drawing.Point(647, 343);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(141, 23);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Export PDF";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ExportPDFButton.Location = new System.Drawing.Point(647, 343);
+            this.ExportPDFButton.Name = "ExportPDFButton";
+            this.ExportPDFButton.Size = new System.Drawing.Size(141, 23);
+            this.ExportPDFButton.TabIndex = 20;
+            this.ExportPDFButton.Text = "Export PDF";
+            this.ExportPDFButton.UseVisualStyleBackColor = true;
+            this.ExportPDFButton.Click += new System.EventHandler(this.ExportPDFButton_Click);
             // 
             // FloorCheckBox
             // 
@@ -272,7 +273,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ComputeTotalCost);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.ExportPDFButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.PlaceHolderName);
@@ -305,7 +306,7 @@
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ExportPDFButton;
         private System.Windows.Forms.CheckBox FloorCheckBox;
         private System.Windows.Forms.CheckBox RoomCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;

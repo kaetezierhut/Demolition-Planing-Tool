@@ -4,10 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 
 namespace Demolition_Planing_Tool
 {
@@ -100,7 +105,7 @@ namespace Demolition_Planing_Tool
                         selectedFloor.AddWaste(waste);
                         itemBox.Add(waste);
                         listBox1.Items.Add($"Floor: {floorIndex}\tRoom: None\tWasteID: {WasteIDComboBox.Text}\t" +
-                            $"Quantities: {quantities}\tBilling: {waste.Billing}\tUnit: {waste.Unit}");
+                            $"Quantities: {quantities}   \tBilling: {waste.Billing}\tUnit: {waste.Unit}");
                     }
                     else
                     {
@@ -250,6 +255,24 @@ namespace Demolition_Planing_Tool
         {
             var totalCost = building.ComputeBillingBuilding();
             TotalCost.Text = $"{totalCost}€";
+        }
+
+        private void ExportPDFButton_Click(object sender, EventArgs e)
+        {
+            PdfWriter writer = new PdfWriter(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName
+                + "\\Export" + "_" + building.BuildingName + ".pdf");
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+            var output = "";
+            foreach (var temp in listBox1.Items)
+            {
+                output += $"{temp}\n";
+            }
+            Paragraph paragraph = new Paragraph(output);
+            document.Add(paragraph);
+            document.Close();
+            MessageBox.Show("PDF Exported", "OK",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
