@@ -50,6 +50,12 @@
             this.ComputeTotalCost = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.TotalCost = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,9 +173,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(269, 71);
+            this.listBox1.Location = new System.Drawing.Point(269, 84);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 251);
+            this.listBox1.Size = new System.Drawing.Size(519, 238);
             this.listBox1.TabIndex = 18;
             // 
             // DeleteButton
@@ -264,11 +270,71 @@
             this.TotalCost.TabIndex = 26;
             this.TotalCost.Text = "0€";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(269, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Floor";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(358, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Room";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(545, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Quantities";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(655, 72);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Billing";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(741, 72);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(26, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Unit";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(443, 72);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "WasteID";
+            // 
             // ComputeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.TotalCost);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ComputeTotalCost);
@@ -313,6 +379,12 @@
         private System.Windows.Forms.Button ComputeTotalCost;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label TotalCost;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
 

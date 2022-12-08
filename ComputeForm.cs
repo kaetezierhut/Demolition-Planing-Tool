@@ -104,8 +104,8 @@ namespace Demolition_Planing_Tool
                         var selectedFloor = building.GetIndividualFloor(floorIndex);
                         selectedFloor.AddWaste(waste);
                         itemBox.Add(waste);
-                        listBox1.Items.Add($"Floor: {floorIndex}\tRoom: None\tWasteID: {WasteIDComboBox.Text}\t" +
-                            $"Quantities: {quantities}   \tBilling: {waste.Billing}\tUnit: {waste.Unit}");
+                        listBox1.Items.Add($"{floorIndex}\t\tNone\t\t{WasteIDComboBox.Text}\t\t" +
+                            $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
                     }
                     else
                     {
@@ -155,8 +155,8 @@ namespace Demolition_Planing_Tool
                             var selectedRoom = selectedFloor.GetRoom(roomIndex);
                             selectedRoom.AddWaste(waste);
                             itemBox.Add(waste);
-                            listBox1.Items.Add($"Floor: {floorIndex}\tRoom: {roomIndex}\tWasteID: {WasteIDComboBox.Text}\t" +
-                            $"Quantities: {quantities}\tBilling: {waste.Billing}\tUnit: {waste.Unit}");
+                            listBox1.Items.Add($"{floorIndex}\t\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
+                            $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
                         }
                         else
                         {
