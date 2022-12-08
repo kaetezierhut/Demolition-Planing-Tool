@@ -36,7 +36,7 @@
             this.NumberFloorBox = new System.Windows.Forms.TextBox();
             this.NumberRoomPerFloorBox = new System.Windows.Forms.TextBox();
             this.StartPlanningButton = new System.Windows.Forms.Button();
-            this.LoadPlanButton = new System.Windows.Forms.Button();
+            this.LoadDocuButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
@@ -54,18 +54,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(274, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "No. Floors";
+            this.label2.Text = "Number of floors";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(274, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
+            this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "No. rooms per floor";
+            this.label3.Text = "Max rooms per floor";
             // 
             // BuildingNameBox
             // 
@@ -100,15 +100,15 @@
             this.StartPlanningButton.UseVisualStyleBackColor = true;
             this.StartPlanningButton.Click += new System.EventHandler(this.StartPlanningButton_Click);
             // 
-            // LoadPlanButton
+            // LoadDocuButton
             // 
-            this.LoadPlanButton.Location = new System.Drawing.Point(392, 331);
-            this.LoadPlanButton.Name = "LoadPlanButton";
-            this.LoadPlanButton.Size = new System.Drawing.Size(100, 23);
-            this.LoadPlanButton.TabIndex = 7;
-            this.LoadPlanButton.Text = "Load Plan";
-            this.LoadPlanButton.UseVisualStyleBackColor = true;
-            this.LoadPlanButton.Click += new System.EventHandler(this.LoadPlanButton_Click);
+            this.LoadDocuButton.Location = new System.Drawing.Point(392, 331);
+            this.LoadDocuButton.Name = "LoadDocuButton";
+            this.LoadDocuButton.Size = new System.Drawing.Size(100, 23);
+            this.LoadDocuButton.TabIndex = 7;
+            this.LoadDocuButton.Text = "Load Docu";
+            this.LoadDocuButton.UseVisualStyleBackColor = true;
+            this.LoadDocuButton.Click += new System.EventHandler(this.LoadPlanButton_Click);
             // 
             // openFileDialog1
             // 
@@ -119,7 +119,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.LoadPlanButton);
+            this.Controls.Add(this.LoadDocuButton);
             this.Controls.Add(this.StartPlanningButton);
             this.Controls.Add(this.NumberRoomPerFloorBox);
             this.Controls.Add(this.NumberFloorBox);
@@ -144,7 +144,7 @@
         private System.Windows.Forms.TextBox NumberFloorBox;
         private System.Windows.Forms.TextBox NumberRoomPerFloorBox;
         private System.Windows.Forms.Button StartPlanningButton;
-        private System.Windows.Forms.Button LoadPlanButton;
+        private System.Windows.Forms.Button LoadDocuButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

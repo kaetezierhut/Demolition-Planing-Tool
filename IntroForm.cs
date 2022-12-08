@@ -45,10 +45,10 @@ namespace Demolition_Planing_Tool
             {
                 MessageBox.Show("Please enter building name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (numberOfFloors < 1 || numberOfFloors > 20)
+            else if (numberOfFloors < 1 || numberOfFloors > 60)
             {
                 MessageBox.Show("Please enter positive number " +
-                    "for number of floor and between 1 and 20", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "for number of floor and between 1 and 60", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (numberOfRoomsPerFloor < 2 || numberOfRoomsPerFloor > 50)
             {
