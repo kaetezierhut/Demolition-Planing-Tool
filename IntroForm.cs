@@ -62,10 +62,17 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        // Load previous work
-        private void LoadPlanButton_Click(object sender, EventArgs e)
+        private void LoadDocuButton_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
+            if (dr == DialogResult.Cancel)
+            {
+                MessageBox.Show("Cancel Save Document", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Saved Document");
+            }
         }
     }
 }

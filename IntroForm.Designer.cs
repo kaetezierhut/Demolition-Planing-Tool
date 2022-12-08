@@ -96,7 +96,7 @@
             this.StartPlanningButton.Name = "StartPlanningButton";
             this.StartPlanningButton.Size = new System.Drawing.Size(100, 23);
             this.StartPlanningButton.TabIndex = 6;
-            this.StartPlanningButton.Text = "Start Planning";
+            this.StartPlanningButton.Text = "Start Document";
             this.StartPlanningButton.UseVisualStyleBackColor = true;
             this.StartPlanningButton.Click += new System.EventHandler(this.StartPlanningButton_Click);
             // 
@@ -108,7 +108,7 @@
             this.LoadDocuButton.TabIndex = 7;
             this.LoadDocuButton.Text = "Load Docu";
             this.LoadDocuButton.UseVisualStyleBackColor = true;
-            this.LoadDocuButton.Click += new System.EventHandler(this.LoadPlanButton_Click);
+            this.LoadDocuButton.Click += new System.EventHandler(this.LoadDocuButton_Click);
             // 
             // openFileDialog1
             // 

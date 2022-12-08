@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.WasteIDComboBox = new System.Windows.Forms.ComboBox();
             this.AddQuantitiesButton = new System.Windows.Forms.Button();
-            this.SaveCurrentPlanButton = new System.Windows.Forms.Button();
+            this.SaveDocumentButton = new System.Windows.Forms.Button();
             this.PlaceHolderName = new System.Windows.Forms.Label();
             this.FloorNumberComboBox = new System.Windows.Forms.ComboBox();
             this.RoomNumberComboBox = new System.Windows.Forms.ComboBox();
@@ -106,15 +106,15 @@
             this.AddQuantitiesButton.UseVisualStyleBackColor = true;
             this.AddQuantitiesButton.Click += new System.EventHandler(this.AddQuantitiesButton_Click);
             // 
-            // SaveCurrentPlanButton
+            // SaveDocumentButton
             // 
-            this.SaveCurrentPlanButton.Location = new System.Drawing.Point(647, 401);
-            this.SaveCurrentPlanButton.Name = "SaveCurrentPlanButton";
-            this.SaveCurrentPlanButton.Size = new System.Drawing.Size(141, 23);
-            this.SaveCurrentPlanButton.TabIndex = 12;
-            this.SaveCurrentPlanButton.Text = "Save Current Plan";
-            this.SaveCurrentPlanButton.UseVisualStyleBackColor = true;
-            this.SaveCurrentPlanButton.Click += new System.EventHandler(this.SaveCurrentPlanButton_Click);
+            this.SaveDocumentButton.Location = new System.Drawing.Point(647, 401);
+            this.SaveDocumentButton.Name = "SaveDocumentButton";
+            this.SaveDocumentButton.Size = new System.Drawing.Size(141, 23);
+            this.SaveDocumentButton.TabIndex = 12;
+            this.SaveDocumentButton.Text = "Save Document";
+            this.SaveDocumentButton.UseVisualStyleBackColor = true;
+            this.SaveDocumentButton.Click += new System.EventHandler(this.SaveDocumentButton_Click);
             // 
             // PlaceHolderName
             // 
@@ -276,7 +276,7 @@
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.PlaceHolderName);
-            this.Controls.Add(this.SaveCurrentPlanButton);
+            this.Controls.Add(this.SaveDocumentButton);
             this.Controls.Add(this.label3);
             this.Name = "ComputeForm";
             this.Text = "Demolition Planning Tool";
@@ -296,7 +296,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox WasteIDComboBox;
         private System.Windows.Forms.Button AddQuantitiesButton;
-        private System.Windows.Forms.Button SaveCurrentPlanButton;
+        private System.Windows.Forms.Button SaveDocumentButton;
         private System.Windows.Forms.Label PlaceHolderName;
         private System.Windows.Forms.ComboBox FloorNumberComboBox;
         private System.Windows.Forms.ComboBox RoomNumberComboBox;

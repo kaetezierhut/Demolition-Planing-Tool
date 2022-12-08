@@ -22,10 +22,17 @@ namespace Demolition_Planing_Tool
             InitializeComponent();            
         }
 
-        private void SaveCurrentPlanButton_Click(object sender, EventArgs e)
+        private void SaveDocumentButton_Click(object sender, EventArgs e)
         {
             DialogResult dr = SaveFileDialog.ShowDialog();
-            MessageBox.Show("Saved Data"); 
+            if (dr == DialogResult.Cancel)
+            {
+                MessageBox.Show("Cancel Save Document", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Saved Document");
+            }
         }
 
         private void SaveFileDialog_FileOk(object sender, CancelEventArgs e)
