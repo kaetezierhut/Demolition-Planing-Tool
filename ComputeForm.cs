@@ -263,7 +263,7 @@ namespace Demolition_Planing_Tool
                 + "\\Export" + "_" + building.BuildingName + ".pdf");
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
-            var output = "";
+            var output = "Floot\t\tRoom\t\tWasteID\t\tQuantities\t\tBilling\t\tUnit\n";
             foreach (var temp in listBox1.Items)
             {
                 output += $"{temp}\n";
@@ -273,6 +273,11 @@ namespace Demolition_Planing_Tool
             document.Close();
             MessageBox.Show("PDF Exported", "OK",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ViewBilling_Click(object sender, EventArgs e)
+        {
+            new ViewBillingForm().ShowDialog();
         }
     }
 }
