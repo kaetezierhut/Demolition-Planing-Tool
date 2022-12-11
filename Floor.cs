@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
+    [Serializable]
     public class Floor
     {
         private List<Waste> floorWaste;
@@ -53,11 +56,35 @@ namespace Demolition_Planing_Tool
 
         public List<Room> GetRoomsList() { return rooms; }
 
-        public List<Waste> GetWasteList() { return floorWaste; }
-
         public Room GetRoom(int id)
         {
             return rooms[id];
+        }
+
+        public List<Waste> GetWasteList()
+        {
+            return floorWaste;
+        }
+
+        public string Serialize()
+        {
+            string floorSerialized = "{";
+            floorSerialized += $"\"floorWaste\": {JsonConvert.SerializeObject(floorWaste)},";
+            string roomSerialized = "\"rooms\": {";
+            foreach (Room room in rooms)
+            {
+                if (rooms.IndexOf(room) + 1 == rooms.Count)
+                {
+                    roomSerialized += $"\"{rooms.IndexOf(room)}\": {room.Serialize()}";
+                }
+                else 
+                {
+                    roomSerialized += $"\"{rooms.IndexOf(room)}\": {room.Serialize()},";
+                }
+            }
+            roomSerialized += "}}";
+            floorSerialized += roomSerialized;
+            return floorSerialized;
         }
     }
 }

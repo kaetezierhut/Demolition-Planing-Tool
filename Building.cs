@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows.Forms;
 
 namespace Demolition_Planing_Tool
 {
+    [Serializable]
     public class Building
     {
         private List<Floor> floors;
@@ -51,6 +53,26 @@ namespace Demolition_Planing_Tool
                 billingBuilding += floor.ComputeBillingFloor();
             }
             return billingBuilding;
+        }
+
+        public string Serialize()
+        {
+            string buildingSeriliazed = $"{{ \"BuildingName\": \"{buildingName}\",";
+            buildingSeriliazed += "\"floors\": {";
+            foreach (Floor floor in floors)
+            {
+                if (floors.IndexOf(floor) + 1 == floors.Count)
+                {
+                    buildingSeriliazed += $"\"{floors.IndexOf(floor)}\": {floor.Serialize()}";
+                }
+                else
+                {
+                    buildingSeriliazed += $"\"{floors.IndexOf(floor)}\": {floor.Serialize()},";
+                }
+            }
+            var alo = JsonConvert.DeserializeObject($"{buildingSeriliazed} }}, " +
+                $"\"wasteData\": {JsonConvert.SerializeObject(WasteData.wasteData)} }}");
+            return JsonConvert.SerializeObject(alo, Formatting.Indented);
         }
     }
 }

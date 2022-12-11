@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,20 +61,51 @@ namespace Demolition_Planing_Tool
             else
             {
                 Building building = new Building(buildingName, numberOfFloors, numberOfRoomsPerFloor);
-                new ComputeForm(building).ShowDialog();
+                new ComputeForm(building, numberOfFloors).ShowDialog();
             }
         }
 
         private void LoadDocuButton_Click(object sender, EventArgs e)
         {
+            string textzh;
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.Cancel)
             {
-                MessageBox.Show("Cancel Save Document", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Cancel Load Document", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Saved Document");
+                using (StreamReader sr = new StreamReader(openFileDialog1.FileName)) {
+                    textzh = sr.ReadToEnd();
+                }
+                JObject loaded = JObject.Parse(textzh);
+                Building building = new Building(
+                    loaded["BuildingName"].ToString(),
+                    loaded["floors"].Count(),
+                    loaded["floors"]["0"]["rooms"].Count()
+                    );
+                WasteData.wasteData = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(loaded["wasteData"].ToString());
+                foreach (var floor in loaded["floors"])
+                {
+                    string floorIndex = ((JProperty) (floor)).Name;
+                    Floor buildingFloor = building.GetIndividualFloor(int.Parse(floorIndex));
+                    foreach (var waste in ((JProperty)(floor)).Value["floorWaste"])
+                    {
+                        Waste floorWaste = JsonConvert.DeserializeObject<Waste>(waste.ToString());
+                        buildingFloor.AddWaste(floorWaste);
+                    }
+                    foreach (var room in ((JProperty)(floor)).Value["rooms"])
+                    {
+                        string roomIndex = ((JProperty)(room)).Name;
+                        Room floorRoom = buildingFloor.GetRoom(int.Parse(roomIndex));
+                        foreach (var waste in ((JProperty)(room)).Value)
+                        {
+                            Waste roomWaste = JsonConvert.DeserializeObject<Waste>(waste.ToString());
+                            floorRoom.AddWaste(roomWaste);
+                        }
+                    }
+                }
+                new ComputeForm(building, loaded["floors"]["0"]["rooms"].Count(), true).ShowDialog();
             }
         }
     }

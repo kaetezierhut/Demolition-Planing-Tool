@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -33,7 +34,15 @@ namespace Demolition_Planing_Tool
             roomWaste.Remove(waste);
         }
 
-        public List<Waste> getRoomWaste() { return roomWaste; }
+        public List<Waste> GetRoomWaste()
+        {
+            return roomWaste;
+        }
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(roomWaste);
+        }
 
     }
 }

@@ -169,7 +169,6 @@
             // 
             // SaveFileDialog
             // 
-            this.SaveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.SaveFileDialog_FileOk);
             // 
             // listBox1
             // 

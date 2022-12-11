@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Principal;
 using System.Windows.Forms;
+using iText.Kernel.Colors;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using Newtonsoft.Json;
 
 namespace Demolition_Planing_Tool
 {
     public partial class ComputeForm : Form
     {
         private Building building;
+        private int maxNumberOfFloors;
+        private bool load;
         private List<Waste> itemBox = new List<Waste>();
+        
 
-        public ComputeForm(Building building)
+        public ComputeForm(Building building, int numberOfFloors, bool load=false)
         {
             this.building = building;
-            InitializeComponent();            
+            this.load = load;
+            maxNumberOfFloors= numberOfFloors;
+            InitializeComponent();
+            if (this.load) MessageBox.Show("Loaded Document");
         }
 
         private void SaveDocumentButton_Click(object sender, EventArgs e)
@@ -36,13 +39,12 @@ namespace Demolition_Planing_Tool
             }
             else
             {
+                using (StreamWriter sw = new StreamWriter(SaveFileDialog.FileName))
+                {
+                    sw.Write(building.Serialize());
+                }
                 MessageBox.Show("Saved Document");
             }
-        }
-
-        private void SaveFileDialog_FileOk(object sender, CancelEventArgs e)
-        {
-
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -105,7 +107,7 @@ namespace Demolition_Planing_Tool
                         selectedFloor.AddWaste(waste);
                         itemBox.Add(waste);
                         listBox1.Items.Add($"{floorIndex}\t\tNone\t\t{WasteIDComboBox.Text}\t\t" +
-                            $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
+                            $"{quantities}\t\t{waste.Billing*waste.Quantities}\t\t{waste.Unit}");
                     }
                     else
                     {
@@ -224,7 +226,31 @@ namespace Demolition_Planing_Tool
                 WasteIDComboBox.Items.Add(item.Key);
             }
             PlaceHolderName.Text = $"Building: {building.BuildingName}, " +
-                $"{building.GetFloors().Count} floors";
+                $"{building.GetFloors().Count} floors, max number of floors {maxNumberOfFloors}";
+
+            if (load)
+            {
+                foreach (Floor floor in building.GetFloors())
+                {
+                    int floorInxdex = building.GetFloors().IndexOf(floor);
+                    foreach (var waste in floor.GetWasteList())
+                    {
+                        itemBox.Add(waste);
+                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t\t{waste.WasteID}\t\t" +
+                            $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
+                    }
+                    foreach (var room in floor.GetRoomsList())
+                    {
+                        int roomInxdex = floor.GetRoomsList().IndexOf(room);
+                        foreach (var waste in room.GetRoomWaste())
+                        {
+                            itemBox.Add(waste);
+                            listBox1.Items.Add($"{floorInxdex}\t\t{roomInxdex}\t\t{waste.WasteID}\t\t" +
+                                $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
+                        }
+                    }
+                }
+            }
         }
 
         private void RoomNumberComboBox_DropDown(object sender, EventArgs e)
@@ -263,13 +289,34 @@ namespace Demolition_Planing_Tool
                 + "\\Export" + "_" + building.BuildingName + ".pdf");
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
-            var output = "Floot\t\tRoom\t\tWasteID\t\tQuantities\t\tBilling\t\tUnit\n";
-            foreach (var temp in listBox1.Items)
+
+            document.Add(new Paragraph($"Building {building.BuildingName}")
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(20));
+
+            Table table = new Table(6, false);
+
+            string[] labels = {"Floor", "Room", "WasteID", "Quantities", "Billing", "Unit"};
+            for (int i = 0; i < labels.Length; i++)
             {
-                output += $"{temp}\n";
+                table.AddCell(new Cell(1, 1)
+                  .SetBackgroundColor(ColorConstants.GRAY)
+                  .SetTextAlignment(TextAlignment.CENTER)
+                  .Add(new Paragraph(labels[i])));
             }
-            Paragraph paragraph = new Paragraph(output);
-            document.Add(paragraph);
+
+            foreach (string temp in listBox1.Items)
+            {
+                string[] items = temp.Split(new[] {"\t\t"}, StringSplitOptions.None);
+                for (int i = 0; i < items.Length; i++)
+                {
+                    table.AddCell(new Cell(1, 1)
+                      .SetTextAlignment(TextAlignment.CENTER)
+                      .Add(new Paragraph(items[i])));
+                }
+            }
+            //Paragraph paragraph = new Paragraph(output);
+            document.Add(table);
             document.Close();
             MessageBox.Show("PDF Exported", "OK",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);

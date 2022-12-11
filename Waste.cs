@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -53,6 +54,11 @@ namespace Demolition_Planing_Tool
         {
             get { return unit; }
             set { unit = value; }
+        }
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
     }
 }

@@ -106,7 +106,7 @@
             this.LoadDocuButton.Name = "LoadDocuButton";
             this.LoadDocuButton.Size = new System.Drawing.Size(100, 23);
             this.LoadDocuButton.TabIndex = 7;
-            this.LoadDocuButton.Text = "Load Docu";
+            this.LoadDocuButton.Text = "Load Document";
             this.LoadDocuButton.UseVisualStyleBackColor = true;
             this.LoadDocuButton.Click += new System.EventHandler(this.LoadDocuButton_Click);
             // 
