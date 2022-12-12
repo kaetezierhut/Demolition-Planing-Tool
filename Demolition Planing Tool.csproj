@@ -134,6 +134,12 @@
     <Compile Include="Forms\ComputeForm.Designer.cs">
       <DependentUpon>ComputeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditBuildingInfoName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditBuildingInfoName.Designer.cs">
+      <DependentUpon>EditBuildingInfoName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\IntroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <EmbeddedResource Include="Forms\ComputeForm.resx">
       <DependentUpon>ComputeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditBuildingInfoName.resx">
+      <DependentUpon>EditBuildingInfoName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\IntroForm.resx">
       <DependentUpon>IntroForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,7 @@
     <EmbeddedResource Include="Forms\ViewBillingForm.resx">
       <DependentUpon>ViewBillingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="WasteData.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -24,6 +24,9 @@ namespace Demolition_Planing_Tool
         private void StartPlanningButton_Click(object sender, EventArgs e)
         {
             string buildingName = BuildingNameBox.Text;
+            string streetName = StreetNameTextBox.Text;
+            string city = CityTextBox.Text;
+            string ownerName = OwnerNameTextBox.Text;
             int numberOfFloors = 0;
             int numberOfRoomsPerFloor = 0;
             try
@@ -60,7 +63,7 @@ namespace Demolition_Planing_Tool
             }
             else
             {
-                Building building = new Building(buildingName, numberOfFloors, numberOfRoomsPerFloor);
+                Building building = new Building(buildingName, streetName, city, ownerName, numberOfFloors, numberOfRoomsPerFloor);
                 new ComputeForm(building, numberOfFloors).ShowDialog();
             }
         }
@@ -68,6 +71,7 @@ namespace Demolition_Planing_Tool
         private void LoadDocuButton_Click(object sender, EventArgs e)
         {
             string textzh;
+            Debug.WriteLine(JsonConvert.SerializeObject(WasteData.wasteData, Formatting.Indented));
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.Cancel)
             {
@@ -81,9 +85,12 @@ namespace Demolition_Planing_Tool
                 JObject loaded = JObject.Parse(textzh);
                 Building building = new Building(
                     loaded["BuildingName"].ToString(),
+                    loaded["BuildingName"].ToString(),
+                    loaded["BuildingName"].ToString(),
+                    loaded["BuildingName"].ToString(),
                     loaded["floors"].Count(),
                     loaded["floors"]["0"]["rooms"].Count()
-                    );
+                );
                 WasteData.wasteData = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(loaded["wasteData"].ToString());
                 foreach (var floor in loaded["floors"])
                 {

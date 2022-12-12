@@ -57,6 +57,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ViewBilling = new System.Windows.Forms.Button();
+            this.EditBuildingInfoButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,9 +167,6 @@
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Floor Number";
-            // 
-            // SaveFileDialog
-            // 
             // 
             // listBox1
             // 
@@ -318,7 +316,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(443, 72);
+            this.label12.Location = new System.Drawing.Point(455, 72);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 13);
             this.label12.TabIndex = 32;
@@ -334,11 +332,22 @@
             this.ViewBilling.UseVisualStyleBackColor = true;
             this.ViewBilling.Click += new System.EventHandler(this.ViewBilling_Click);
             // 
+            // EditBuildingInfoButton
+            // 
+            this.EditBuildingInfoButton.Location = new System.Drawing.Point(269, 401);
+            this.EditBuildingInfoButton.Name = "EditBuildingInfoButton";
+            this.EditBuildingInfoButton.Size = new System.Drawing.Size(131, 23);
+            this.EditBuildingInfoButton.TabIndex = 34;
+            this.EditBuildingInfoButton.Text = "Edit Building Info";
+            this.EditBuildingInfoButton.UseVisualStyleBackColor = true;
+            this.EditBuildingInfoButton.Click += new System.EventHandler(this.EditBuildingInfoButton_Click);
+            // 
             // ComputeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EditBuildingInfoButton);
             this.Controls.Add(this.ViewBilling);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -397,6 +406,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button ViewBilling;
+        private System.Windows.Forms.Button EditBuildingInfoButton;
     }
 }
 

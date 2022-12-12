@@ -43,7 +43,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(131, 57);
+            this.label9.Location = new System.Drawing.Point(12, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 8;
@@ -52,7 +52,7 @@
             // ViewBillingWasteIDComboBox
             // 
             this.ViewBillingWasteIDComboBox.FormattingEnabled = true;
-            this.ViewBillingWasteIDComboBox.Location = new System.Drawing.Point(185, 54);
+            this.ViewBillingWasteIDComboBox.Location = new System.Drawing.Point(67, 26);
             this.ViewBillingWasteIDComboBox.Name = "ViewBillingWasteIDComboBox";
             this.ViewBillingWasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.ViewBillingWasteIDComboBox.TabIndex = 9;
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(145, 96);
+            this.label2.Location = new System.Drawing.Point(12, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 12;
@@ -70,15 +70,16 @@
             // NameTextBox
             // 
             this.NameTextBox.Enabled = false;
-            this.NameTextBox.Location = new System.Drawing.Point(186, 93);
+            this.NameTextBox.Location = new System.Drawing.Point(67, 53);
+            this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(120, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(365, 76);
             this.NameTextBox.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(131, 121);
+            this.label3.Location = new System.Drawing.Point(12, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 14;
@@ -87,7 +88,7 @@
             // UnitTextBox
             // 
             this.UnitTextBox.Enabled = false;
-            this.UnitTextBox.Location = new System.Drawing.Point(186, 145);
+            this.UnitTextBox.Location = new System.Drawing.Point(67, 168);
             this.UnitTextBox.Name = "UnitTextBox";
             this.UnitTextBox.Size = new System.Drawing.Size(120, 20);
             this.UnitTextBox.TabIndex = 17;
@@ -95,7 +96,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(154, 148);
+            this.label4.Location = new System.Drawing.Point(12, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 16;
@@ -103,7 +104,7 @@
             // 
             // UpdateBillingButton
             // 
-            this.UpdateBillingButton.Location = new System.Drawing.Point(196, 183);
+            this.UpdateBillingButton.Location = new System.Drawing.Point(335, 205);
             this.UpdateBillingButton.Name = "UpdateBillingButton";
             this.UpdateBillingButton.Size = new System.Drawing.Size(97, 23);
             this.UpdateBillingButton.TabIndex = 19;
@@ -114,7 +115,7 @@
             // BillingUpDown
             // 
             this.BillingUpDown.Enabled = false;
-            this.BillingUpDown.Location = new System.Drawing.Point(186, 119);
+            this.BillingUpDown.Location = new System.Drawing.Point(67, 135);
             this.BillingUpDown.Maximum = new decimal(new int[] {
             10000,
             0,

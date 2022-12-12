@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
+using Demolition_Planing_Tool.Forms;
 using iText.Kernel.Colors;
 using iText.Kernel.Pdf;
 using iText.Layout;
@@ -157,7 +158,7 @@ namespace Demolition_Planing_Tool
                             var selectedRoom = selectedFloor.GetRoom(roomIndex);
                             selectedRoom.AddWaste(waste);
                             itemBox.Add(waste);
-                            listBox1.Items.Add($"{floorIndex}\t\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
+                            listBox1.Items.Add($"{floorIndex}\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
                             $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
                         }
                         else
@@ -236,7 +237,7 @@ namespace Demolition_Planing_Tool
                     foreach (var waste in floor.GetWasteList())
                     {
                         itemBox.Add(waste);
-                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t\t{waste.WasteID}\t\t" +
+                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t{waste.WasteID}\t\t" +
                             $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
                     }
                     foreach (var room in floor.GetRoomsList())
@@ -290,9 +291,18 @@ namespace Demolition_Planing_Tool
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
-            document.Add(new Paragraph($"Building {building.BuildingName}")
+            document.Add(new Paragraph($"Building: {building.BuildingName}")
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontSize(20));
+            document.Add(new Paragraph($"City: {building.City}")
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(18));
+            document.Add(new Paragraph($"Street: {building.StreetName}")
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(16));
+            document.Add(new Paragraph($"Owner: {building.OwnerName}")
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(14));
 
             Table table = new Table(6, false);
 
@@ -305,17 +315,62 @@ namespace Demolition_Planing_Tool
                   .Add(new Paragraph(labels[i])));
             }
 
+            List<string[]> strings = new List<string[]>();
+
             foreach (string temp in listBox1.Items)
             {
-                string[] items = temp.Split(new[] {"\t\t"}, StringSplitOptions.None);
-                for (int i = 0; i < items.Length; i++)
-                {
-                    table.AddCell(new Cell(1, 1)
-                      .SetTextAlignment(TextAlignment.CENTER)
-                      .Add(new Paragraph(items[i])));
-                }
+                strings.Add(temp.Split(new[] {"\t\t"}, StringSplitOptions.None));
             }
-            //Paragraph paragraph = new Paragraph(output);
+
+            strings.Sort((x1, x2) =>
+            {
+                int floor1 = int.Parse(x1[0]);
+                int floor2 = int.Parse(x2[0]);
+                
+                int room1 = x1[1] == "None" ? -1 : int.Parse(x1[1]) ;
+                int room2 = x2[1] == "None" ? -1 : int.Parse(x2[1]);
+                int quantities1 = int.Parse(x1[3]);
+                int quantities2 = int.Parse(x2[3]);
+                if (floor1 < floor2)
+                {
+                    return -1;
+                }
+                else if (floor1 > floor2)
+                {
+                    return 1;
+                }
+                else {
+                    if (room1 < room2)
+                    {
+                        return -1;
+                    }
+                    else if (room2 < room1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (quantities1 < quantities2)
+                        {
+                            return -1;
+                        }
+                        else if (quantities1 > quantities2)
+                        {
+                            return 1;
+                        }
+                        else return 0;
+                    }
+                }
+            });
+
+            strings.ForEach(items => {
+                for (int i = 0; i < items.Length; i++)
+                    table.AddCell(new Cell(1, 1)
+                         .SetTextAlignment(TextAlignment.CENTER)
+                         .Add(new Paragraph(items[i])));
+                }
+            );
+
             document.Add(table);
             document.Close();
             MessageBox.Show("PDF Exported", "OK",
@@ -325,6 +380,13 @@ namespace Demolition_Planing_Tool
         private void ViewBilling_Click(object sender, EventArgs e)
         {
             new ViewBillingForm().ShowDialog();
+        }
+
+        private void EditBuildingInfoButton_Click(object sender, EventArgs e)
+        {
+            new EditBuildingInfoName(building).ShowDialog();
+            PlaceHolderName.Text = $"Building: {building.BuildingName}, " +
+                $"{building.GetFloors().Count} floors, max number of floors {maxNumberOfFloors}";
         }
     }
 }

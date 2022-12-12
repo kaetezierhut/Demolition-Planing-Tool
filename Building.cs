@@ -14,10 +14,16 @@ namespace Demolition_Planing_Tool
     {
         private List<Floor> floors;
         private string buildingName;
+        private string streetName;
+        private string city;
+        private string ownerName;
 
-        public Building(string buildingName, int nrFloors, int nrRoomsPerFloor)
+        public Building(string buildingName, string streetName, string city, string ownerName, int nrFloors, int nrRoomsPerFloor)
         {
             this.buildingName = buildingName;
+            this.streetName = streetName;
+            this.city = city;
+            this.ownerName = ownerName;
             floors = new List<Floor>(nrFloors);
             for (var i = 0; i < nrFloors; i++)
             {
@@ -33,6 +39,24 @@ namespace Demolition_Planing_Tool
         {
             get { return buildingName; }
             set { buildingName = value; }
+        }
+
+        public string StreetName
+        {
+            get { return streetName; }
+            set { streetName = value; }
+        }
+
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+        public string OwnerName
+        {
+            get { return ownerName; }
+            set { ownerName = value; }
         }
         
         public List<Floor> GetFloors()
