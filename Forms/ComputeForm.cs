@@ -54,8 +54,11 @@ namespace Demolition_Planing_Tool
             {
                 int selectedIndex = listBox1.SelectedIndex;
                 Waste toBeRemoved = itemBox[selectedIndex];
+                Debug.WriteLine(listBox1.Items[selectedIndex].ToString());
                 var item = listBox1.Items[selectedIndex].ToString().Split('\t');
+                Debug.WriteLine(item[0]);
                 var selectedFloor = building.GetIndividualFloor(int.Parse(item[0].Split(' ')[1]));
+                Debug.WriteLine(selectedFloor.Serialize());
                 var selectedRoom = item[1].Split(' ')[1];
                 if (selectedRoom == "None")
                 {
@@ -158,7 +161,7 @@ namespace Demolition_Planing_Tool
                             var selectedRoom = selectedFloor.GetRoom(roomIndex);
                             selectedRoom.AddWaste(waste);
                             itemBox.Add(waste);
-                            listBox1.Items.Add($"{floorIndex}\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
+                            listBox1.Items.Add($"{floorIndex}\t\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
                             $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
                         }
                         else
@@ -237,7 +240,7 @@ namespace Demolition_Planing_Tool
                     foreach (var waste in floor.GetWasteList())
                     {
                         itemBox.Add(waste);
-                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t{waste.WasteID}\t\t" +
+                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t\t{waste.WasteID}\t\t" +
                             $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
                     }
                     foreach (var room in floor.GetRoomsList())
