@@ -58,6 +58,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.ViewBilling = new System.Windows.Forms.Button();
             this.EditBuildingInfoButton = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@
             // 
             // SaveDocumentButton
             // 
-            this.SaveDocumentButton.Location = new System.Drawing.Point(647, 401);
+            this.SaveDocumentButton.Location = new System.Drawing.Point(755, 401);
             this.SaveDocumentButton.Name = "SaveDocumentButton";
             this.SaveDocumentButton.Size = new System.Drawing.Size(141, 23);
             this.SaveDocumentButton.TabIndex = 12;
@@ -173,7 +174,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(269, 84);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 238);
+            this.listBox1.Size = new System.Drawing.Size(627, 238);
             this.listBox1.TabIndex = 18;
             // 
             // DeleteButton
@@ -188,7 +189,7 @@
             // 
             // ExportPDFButton
             // 
-            this.ExportPDFButton.Location = new System.Drawing.Point(647, 343);
+            this.ExportPDFButton.Location = new System.Drawing.Point(755, 344);
             this.ExportPDFButton.Name = "ExportPDFButton";
             this.ExportPDFButton.Size = new System.Drawing.Size(141, 23);
             this.ExportPDFButton.TabIndex = 20;
@@ -271,7 +272,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 72);
+            this.label2.Location = new System.Drawing.Point(361, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 27;
@@ -280,7 +281,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(358, 72);
+            this.label8.Location = new System.Drawing.Point(459, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 28;
@@ -298,16 +299,16 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(655, 72);
+            this.label10.Location = new System.Drawing.Point(635, 72);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
+            this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 30;
-            this.label10.Text = "Billing";
+            this.label10.Text = "Billing/Unit";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(741, 72);
+            this.label11.Location = new System.Drawing.Point(752, 72);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(26, 13);
             this.label11.TabIndex = 31;
@@ -316,7 +317,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(455, 72);
+            this.label12.Location = new System.Drawing.Point(266, 72);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 13);
             this.label12.TabIndex = 32;
@@ -342,11 +343,21 @@
             this.EditBuildingInfoButton.UseVisualStyleBackColor = true;
             this.EditBuildingInfoButton.Click += new System.EventHandler(this.EditBuildingInfoButton_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(836, 72);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "Billing";
+            // 
             // ComputeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(903, 450);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.EditBuildingInfoButton);
             this.Controls.Add(this.ViewBilling);
             this.Controls.Add(this.label12);
@@ -407,6 +418,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button ViewBilling;
         private System.Windows.Forms.Button EditBuildingInfoButton;
+        private System.Windows.Forms.Label label13;
     }
 }
 

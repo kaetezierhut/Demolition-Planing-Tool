@@ -55,8 +55,8 @@ namespace Demolition_Planing_Tool
                 int selectedIndex = listBox1.SelectedIndex;
                 Waste toBeRemoved = itemBox[selectedIndex];
                 var item = listBox1.Items[selectedIndex].ToString().Split(new[] { "\t\t" }, StringSplitOptions.None);
-                var selectedFloor = building.GetIndividualFloor(int.Parse(item[0]));                
-                var selectedRoom = item[1];
+                var selectedFloor = building.GetIndividualFloor(int.Parse(item[1]));       
+                var selectedRoom = item[2];
                 if (selectedRoom == "None")
                 {
                     selectedFloor.RemoveWaste(toBeRemoved);
@@ -73,6 +73,13 @@ namespace Demolition_Planing_Tool
             {
                 MessageBox.Show("Please select an item to delete it");
             }
+        }
+
+        private void UpdateListBox(string wasteID, dynamic floorIndex, dynamic roomIndex, 
+            dynamic quantities, dynamic billingPerUnit, string Unit, dynamic billing)
+        {
+            listBox1.Items.Add($"{wasteID}\t\t{floorIndex}\t\t{roomIndex}\t\t" +
+                            $"{quantities}\t\t{billingPerUnit}\t\t{Unit}\t\t{billing}");
         }
 
         private void AddQuantitiesButton_Click(object sender, EventArgs e)
@@ -107,8 +114,8 @@ namespace Demolition_Planing_Tool
                         var selectedFloor = building.GetIndividualFloor(floorIndex);
                         selectedFloor.AddWaste(waste);
                         itemBox.Add(waste);
-                        listBox1.Items.Add($"{floorIndex}\t\tNone\t\t{WasteIDComboBox.Text}\t\t" +
-                            $"{quantities}\t\t{waste.Billing*waste.Quantities}\t\t{waste.Unit}");
+                        UpdateListBox(WasteIDComboBox.Text, floorIndex, "None", quantities,
+                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
                     }
                     else
                     {
@@ -158,8 +165,8 @@ namespace Demolition_Planing_Tool
                             var selectedRoom = selectedFloor.GetRoom(roomIndex);
                             selectedRoom.AddWaste(waste);
                             itemBox.Add(waste);
-                            listBox1.Items.Add($"{floorIndex}\t\t{roomIndex}  \t\t{WasteIDComboBox.Text}\t\t" +
-                            $"{quantities}\t\t{waste.Billing}\t\t{waste.Unit}");
+                            UpdateListBox(WasteIDComboBox.Text, floorIndex, roomIndex, quantities,
+                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
                         }
                         else
                         {
@@ -233,12 +240,12 @@ namespace Demolition_Planing_Tool
             {
                 foreach (Floor floor in building.GetFloors())
                 {
-                    int floorInxdex = building.GetFloors().IndexOf(floor);
+                    int floorIndex = building.GetFloors().IndexOf(floor);
                     foreach (var waste in floor.GetWasteList())
                     {
                         itemBox.Add(waste);
-                        listBox1.Items.Add($"{floorInxdex}\t\tNone\t\t{waste.WasteID}\t\t" +
-                            $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
+                        UpdateListBox(WasteIDComboBox.Text, floorIndex, "None", waste.Quantities,
+                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
                     }
                     foreach (var room in floor.GetRoomsList())
                     {
@@ -246,8 +253,8 @@ namespace Demolition_Planing_Tool
                         foreach (var waste in room.GetRoomWaste())
                         {
                             itemBox.Add(waste);
-                            listBox1.Items.Add($"{floorInxdex}\t\t{roomInxdex}\t\t{waste.WasteID}\t\t" +
-                                $"{waste.Quantities}\t\t{waste.Billing * waste.Quantities}\t\t{waste.Unit}");
+                            UpdateListBox(WasteIDComboBox.Text, floorIndex, roomInxdex, waste.Quantities,
+                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
                         }
                     }
                 }
@@ -304,9 +311,9 @@ namespace Demolition_Planing_Tool
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontSize(14));
 
-            Table table = new Table(6, false);
+            Table table = new Table(7, false);
 
-            string[] labels = {"Floor", "Room", "WasteID", "Quantities", "Billing", "Unit"};
+            string[] labels = {"WasteID", "Floor", "Room", "Quantities", "Billing/Unit", "Unit", "Billing"};
             for (int i = 0; i < labels.Length; i++)
             {
                 table.AddCell(new Cell(1, 1)
@@ -324,41 +331,58 @@ namespace Demolition_Planing_Tool
 
             strings.Sort((x1, x2) =>
             {
-                int floor1 = int.Parse(x1[0]);
-                int floor2 = int.Parse(x2[0]);
+                int floor1 = int.Parse(x1[1]);
+                int floor2 = int.Parse(x2[1]);
                 
-                int room1 = x1[1] == "None" ? -1 : int.Parse(x1[1]) ;
-                int room2 = x2[1] == "None" ? -1 : int.Parse(x2[1]);
+                int room1 = x1[2] == "None" ? -1 : int.Parse(x1[2]);
+                int room2 = x2[2] == "None" ? -1 : int.Parse(x2[2]);
+
+                int wasteID1 = int.Parse(x1[0].Replace(" ", ""));
+                int wasteID2 = int.Parse(x2[0].Replace(" ", ""));
+
                 int quantities1 = int.Parse(x1[3]);
                 int quantities2 = int.Parse(x2[3]);
-                if (floor1 < floor2)
+
+                if (wasteID1 < wasteID2)
                 {
                     return -1;
                 }
-                else if (floor1 > floor2)
+                else if (wasteID1 > wasteID2)
                 {
                     return 1;
                 }
-                else {
-                    if (room1 < room2)
+                else
+                {
+                    if (floor1 < floor2)
                     {
                         return -1;
                     }
-                    else if (room2 < room1)
+                    else if (floor1 > floor2)
                     {
                         return 1;
                     }
                     else
                     {
-                        if (quantities1 < quantities2)
+                        if (room1 < room2)
                         {
                             return -1;
                         }
-                        else if (quantities1 > quantities2)
+                        else if (room2 < room1)
                         {
                             return 1;
                         }
-                        else return 0;
+                        else
+                        {
+                            if (quantities1 < quantities2)
+                            {
+                                return -1;
+                            }
+                            else if (quantities1 > quantities2)
+                            {
+                                return 1;
+                            }
+                            else return 0;
+                        }
                     }
                 }
             });
@@ -370,7 +394,7 @@ namespace Demolition_Planing_Tool
                          .Add(new Paragraph(items[i])));
                 }
             );
-
+            
             document.Add(table);
             document.Close();
             MessageBox.Show("PDF Exported", "OK",
