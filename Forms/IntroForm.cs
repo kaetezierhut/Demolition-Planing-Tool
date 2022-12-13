@@ -85,9 +85,9 @@ namespace Demolition_Planing_Tool
                 JObject loaded = JObject.Parse(textzh);
                 Building building = new Building(
                     loaded["BuildingName"].ToString(),
-                    loaded["BuildingName"].ToString(),
-                    loaded["BuildingName"].ToString(),
-                    loaded["BuildingName"].ToString(),
+                    loaded["StreetName"].ToString(),
+                    loaded["City"].ToString(),
+                    loaded["OwnerName"].ToString(),
                     loaded["floors"].Count(),
                     loaded["floors"]["0"]["rooms"].Count()
                 );

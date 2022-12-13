@@ -81,7 +81,8 @@ namespace Demolition_Planing_Tool
 
         public string Serialize()
         {
-            string buildingSeriliazed = $"{{ \"BuildingName\": \"{buildingName}\",";
+            string buildingInfo = JsonConvert.SerializeObject(this).Replace("}", "");
+            string buildingSeriliazed = $"{{ {buildingInfo.Replace("{", "")},";
             buildingSeriliazed += "\"floors\": {";
             foreach (Floor floor in floors)
             {
