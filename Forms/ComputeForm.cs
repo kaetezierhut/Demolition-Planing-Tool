@@ -54,12 +54,9 @@ namespace Demolition_Planing_Tool
             {
                 int selectedIndex = listBox1.SelectedIndex;
                 Waste toBeRemoved = itemBox[selectedIndex];
-                Debug.WriteLine(listBox1.Items[selectedIndex].ToString());
-                var item = listBox1.Items[selectedIndex].ToString().Split('\t');
-                Debug.WriteLine(item[0]);
-                var selectedFloor = building.GetIndividualFloor(int.Parse(item[0].Split(' ')[1]));
-                Debug.WriteLine(selectedFloor.Serialize());
-                var selectedRoom = item[1].Split(' ')[1];
+                var item = listBox1.Items[selectedIndex].ToString().Split(new[] { "\t\t" }, StringSplitOptions.None);
+                var selectedFloor = building.GetIndividualFloor(int.Parse(item[0]));                
+                var selectedRoom = item[1];
                 if (selectedRoom == "None")
                 {
                     selectedFloor.RemoveWaste(toBeRemoved);
