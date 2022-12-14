@@ -412,5 +412,13 @@ namespace Demolition_Planing_Tool
             PlaceHolderName.Text = $"Building: {building.BuildingName}, " +
                 $"{building.GetFloors().Count} floors, max number of floors {maxNumberOfFloors}";
         }
+
+        private void WasteIDComboBox_DropDown(object sender, EventArgs e)
+        {
+            foreach (var item in WasteData.wasteData)
+            {
+                WasteIDComboBox.Items.Add(item.Key);
+            }
+        }
     }
 }

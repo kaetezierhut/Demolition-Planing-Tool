@@ -104,6 +104,7 @@
             this.WasteIDComboBox.Name = "WasteIDComboBox";
             this.WasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.WasteIDComboBox.TabIndex = 9;
+            this.WasteIDComboBox.DropDown += new System.EventHandler(this.WasteIDComboBox_DropDown);
             // 
             // AddQuantitiesButton
             // 
@@ -301,9 +302,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(635, 72);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.Size = new System.Drawing.Size(73, 13);
             this.label10.TabIndex = 30;
-            this.label10.Text = "Billing/Unit";
+            this.label10.Text = "Billing/Unit (€)";
             // 
             // label11
             // 
@@ -348,9 +349,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(836, 72);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.Size = new System.Drawing.Size(49, 13);
             this.label13.TabIndex = 35;
-            this.label13.Text = "Billing";
+            this.label13.Text = "Billing (€)";
             // 
             // ComputeForm
             // 

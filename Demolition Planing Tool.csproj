@@ -134,6 +134,12 @@
     <Compile Include="Forms\ComputeForm.Designer.cs">
       <DependentUpon>ComputeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateNewWasteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateNewWasteForm.Designer.cs">
+      <DependentUpon>CreateNewWasteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditBuildingInfoName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     <Compile Include="WasteData.cs" />
     <EmbeddedResource Include="Forms\ComputeForm.resx">
       <DependentUpon>ComputeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateNewWasteForm.resx">
+      <DependentUpon>CreateNewWasteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditBuildingInfoName.resx">
       <DependentUpon>EditBuildingInfoName.cs</DependentUpon>

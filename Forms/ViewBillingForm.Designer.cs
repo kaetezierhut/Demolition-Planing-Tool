@@ -33,10 +33,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.UnitTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.UpdateBillingButton = new System.Windows.Forms.Button();
             this.BillingUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CreateNewWasteButton = new System.Windows.Forms.Button();
+            this.UnitComboBox = new System.Windows.Forms.ComboBox();
+            this.UnitTextBox = new System.Windows.Forms.TextBox();
+            this.HazardousCheckBox = new System.Windows.Forms.CheckBox();
+            this.ExclusiveToRoomCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.BillingUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,10 +56,11 @@
             // ViewBillingWasteIDComboBox
             // 
             this.ViewBillingWasteIDComboBox.FormattingEnabled = true;
-            this.ViewBillingWasteIDComboBox.Location = new System.Drawing.Point(67, 26);
+            this.ViewBillingWasteIDComboBox.Location = new System.Drawing.Point(106, 26);
             this.ViewBillingWasteIDComboBox.Name = "ViewBillingWasteIDComboBox";
             this.ViewBillingWasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.ViewBillingWasteIDComboBox.TabIndex = 9;
+            this.ViewBillingWasteIDComboBox.DropDown += new System.EventHandler(this.ViewBillingWasteIDComboBox_DropDown);
             this.ViewBillingWasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.ViewBillingWasteIDComboBox_SelectedIndexChanged);
             // 
             // label2
@@ -69,11 +74,11 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Enabled = false;
-            this.NameTextBox.Location = new System.Drawing.Point(67, 53);
+            this.NameTextBox.Location = new System.Drawing.Point(107, 53);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(365, 76);
+            this.NameTextBox.ReadOnly = true;
+            this.NameTextBox.Size = new System.Drawing.Size(360, 76);
             this.NameTextBox.TabIndex = 13;
             // 
             // label3
@@ -81,17 +86,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 14;
-            this.label3.Text = "Billing (€)";
-            // 
-            // UnitTextBox
-            // 
-            this.UnitTextBox.Enabled = false;
-            this.UnitTextBox.Location = new System.Drawing.Point(67, 168);
-            this.UnitTextBox.Name = "UnitTextBox";
-            this.UnitTextBox.Size = new System.Drawing.Size(120, 20);
-            this.UnitTextBox.TabIndex = 17;
+            this.label3.Text = "Billing per Unit (€)";
             // 
             // label4
             // 
@@ -104,9 +101,9 @@
             // 
             // UpdateBillingButton
             // 
-            this.UpdateBillingButton.Location = new System.Drawing.Point(335, 205);
+            this.UpdateBillingButton.Location = new System.Drawing.Point(359, 205);
             this.UpdateBillingButton.Name = "UpdateBillingButton";
-            this.UpdateBillingButton.Size = new System.Drawing.Size(97, 23);
+            this.UpdateBillingButton.Size = new System.Drawing.Size(108, 23);
             this.UpdateBillingButton.TabIndex = 19;
             this.UpdateBillingButton.Text = "Update Billing";
             this.UpdateBillingButton.UseVisualStyleBackColor = true;
@@ -115,7 +112,7 @@
             // BillingUpDown
             // 
             this.BillingUpDown.Enabled = false;
-            this.BillingUpDown.Location = new System.Drawing.Point(67, 135);
+            this.BillingUpDown.Location = new System.Drawing.Point(107, 135);
             this.BillingUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -127,14 +124,68 @@
             this.BillingUpDown.Tag = "€";
             this.BillingUpDown.ThousandsSeparator = true;
             // 
+            // CreateNewWasteButton
+            // 
+            this.CreateNewWasteButton.Location = new System.Drawing.Point(12, 205);
+            this.CreateNewWasteButton.Name = "CreateNewWasteButton";
+            this.CreateNewWasteButton.Size = new System.Drawing.Size(110, 23);
+            this.CreateNewWasteButton.TabIndex = 21;
+            this.CreateNewWasteButton.Text = "Create New Waste";
+            this.CreateNewWasteButton.UseVisualStyleBackColor = true;
+            this.CreateNewWasteButton.Click += new System.EventHandler(this.CreateNewWasteButton_Click);
+            // 
+            // UnitComboBox
+            // 
+            this.UnitComboBox.Enabled = false;
+            this.UnitComboBox.FormattingEnabled = true;
+            this.UnitComboBox.Location = new System.Drawing.Point(107, 168);
+            this.UnitComboBox.Name = "UnitComboBox";
+            this.UnitComboBox.Size = new System.Drawing.Size(41, 21);
+            this.UnitComboBox.TabIndex = 26;
+            this.UnitComboBox.SelectedIndexChanged += new System.EventHandler(this.UnitComboBox_SelectedIndexChanged);
+            // 
+            // UnitTextBox
+            // 
+            this.UnitTextBox.Location = new System.Drawing.Point(154, 168);
+            this.UnitTextBox.Name = "UnitTextBox";
+            this.UnitTextBox.ReadOnly = true;
+            this.UnitTextBox.Size = new System.Drawing.Size(185, 20);
+            this.UnitTextBox.TabIndex = 27;
+            // 
+            // HazardousCheckBox
+            // 
+            this.HazardousCheckBox.AutoSize = true;
+            this.HazardousCheckBox.Enabled = false;
+            this.HazardousCheckBox.Location = new System.Drawing.Point(359, 138);
+            this.HazardousCheckBox.Name = "HazardousCheckBox";
+            this.HazardousCheckBox.Size = new System.Drawing.Size(77, 17);
+            this.HazardousCheckBox.TabIndex = 42;
+            this.HazardousCheckBox.Text = "Hazardous";
+            this.HazardousCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ExclusiveToRoomCheckBox
+            // 
+            this.ExclusiveToRoomCheckBox.AutoSize = true;
+            this.ExclusiveToRoomCheckBox.Enabled = false;
+            this.ExclusiveToRoomCheckBox.Location = new System.Drawing.Point(359, 171);
+            this.ExclusiveToRoomCheckBox.Name = "ExclusiveToRoomCheckBox";
+            this.ExclusiveToRoomCheckBox.Size = new System.Drawing.Size(114, 17);
+            this.ExclusiveToRoomCheckBox.TabIndex = 43;
+            this.ExclusiveToRoomCheckBox.Text = "Exclusive to Room";
+            this.ExclusiveToRoomCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ViewBillingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 240);
+            this.ClientSize = new System.Drawing.Size(479, 235);
+            this.Controls.Add(this.ExclusiveToRoomCheckBox);
+            this.Controls.Add(this.HazardousCheckBox);
+            this.Controls.Add(this.UnitTextBox);
+            this.Controls.Add(this.UnitComboBox);
+            this.Controls.Add(this.CreateNewWasteButton);
             this.Controls.Add(this.BillingUpDown);
             this.Controls.Add(this.UpdateBillingButton);
-            this.Controls.Add(this.UnitTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NameTextBox);
@@ -157,9 +208,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox UnitTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button UpdateBillingButton;
         private System.Windows.Forms.NumericUpDown BillingUpDown;
+        private System.Windows.Forms.Button CreateNewWasteButton;
+        private System.Windows.Forms.ComboBox UnitComboBox;
+        private System.Windows.Forms.TextBox UnitTextBox;
+        private System.Windows.Forms.CheckBox HazardousCheckBox;
+        private System.Windows.Forms.CheckBox ExclusiveToRoomCheckBox;
     }
 }

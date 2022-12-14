@@ -65,3 +65,4 @@ C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\bin\De
 C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition Planing Tool.csproj.CopyComplete
 C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.ViewBillingForm.resources
 C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.Forms.EditBuildingInfoName.resources
+C:\Users\Predator\Desktop\Engineering Informatics\Demolition Planing Tool\obj\Debug\Demolition_Planing_Tool.Forms.CreateNewWasteForm.resources
