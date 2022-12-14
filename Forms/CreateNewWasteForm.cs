@@ -34,9 +34,9 @@ namespace Demolition_Planing_Tool.Forms
         {
             try
             {
-                int a = int.Parse(WasteIDTextBox.Text.Replace(" ", ""));
+                int wasteID = int.Parse(WasteIDTextBox.Text.Replace(" ", ""));
             }
-            catch 
+            catch
             {
                 MessageBox.Show("WasteID should only consist of integer and space ", "Warning",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
