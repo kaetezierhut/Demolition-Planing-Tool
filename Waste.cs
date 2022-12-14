@@ -14,6 +14,7 @@ namespace Demolition_Planing_Tool
         private double billing;
         private bool roomExclusive = true;
         private string unit;
+        private bool hazardous;
         private int quantities = 0;
         
         public Waste(string wasteID, int quatities)
@@ -54,6 +55,12 @@ namespace Demolition_Planing_Tool
         {
             get { return unit; }
             set { unit = value; }
+        }
+
+        public bool Hazardous
+        {
+            get { return hazardous; }
+            set { hazardous = value; }
         }
 
         public string Serialize()
