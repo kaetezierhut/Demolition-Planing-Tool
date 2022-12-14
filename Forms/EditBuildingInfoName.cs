@@ -19,6 +19,7 @@ namespace Demolition_Planing_Tool.Forms
             InitializeComponent();
         }
 
+        // Update the building info
         private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
             building.BuildingName = BuildingNameBox.Text;
@@ -29,6 +30,7 @@ namespace Demolition_Planing_Tool.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Load previous buidling info
         private void EditBuildingInfoName_Load(object sender, EventArgs e)
         {
             BuildingNameBox.Text = building.BuildingName;

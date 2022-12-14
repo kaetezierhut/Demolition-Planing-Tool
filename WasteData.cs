@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iText.Layout.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,7 @@ namespace Demolition_Planing_Tool
             { "17 09 04", new string[]{ "mixed construction and demolition wastes other than those mentioned in 17 09 01, 17 09 02 and 17 09 03", "122", "kg", "false" , "false" }},
         };
 
+        // Unit data according to DIN
         public static Dictionary<string, string> unitData = new Dictionary<string, string>()
         {
             {"m3", "0.5.1 Room measure"},

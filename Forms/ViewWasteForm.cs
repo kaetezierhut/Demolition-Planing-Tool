@@ -19,6 +19,7 @@ namespace Demolition_Planing_Tool
             InitializeComponent();
         }
 
+        // Render Unit at load
         private void ViewWasteForm_Load(object sender, EventArgs e)
         {
             foreach (var item in WasteData.unitData)
@@ -29,12 +30,15 @@ namespace Demolition_Planing_Tool
 
         private void ViewWasteWasteIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Enable other details after choosing the wasteID
             BillingUpDown.Enabled = true;
             UnitComboBox.Enabled = true;
             UnitTextBox.Enabled = true;
             HazardousCheckBox.Enabled = true;
             ExclusiveToRoomCheckBox.Enabled = true;
-            string[] loaded = WasteData.wasteData[ViewBillingWasteIDComboBox.Text];
+
+            // Load their information datil
+            string[] loaded = WasteData.wasteData[ViewWasteWasteIDComboBox.Text];
             NameTextBox.Text = loaded[0];
             BillingUpDown.Text = loaded[1];
             UnitComboBox.Text = loaded[2];
@@ -45,13 +49,14 @@ namespace Demolition_Planing_Tool
 
         private void UpdateWasteButton_Click(object sender, EventArgs e)
         {
-            if (BillingUpDown.Enabled)
+            // Change only when selected wasteid
+            if (ViewWasteWasteIDComboBox.SelectedIndex > -1)
             {
-                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][1] = BillingUpDown.Text;
-                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][2] = UnitComboBox.Text;
-                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][3] = ExclusiveToRoomCheckBox.Checked.ToString();
-                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][4] = HazardousCheckBox.Checked.ToString();
-                MessageBox.Show($"Updated WasteID {ViewBillingWasteIDComboBox.Text}", "Billing",
+                WasteData.wasteData[ViewWasteWasteIDComboBox.Text][1] = BillingUpDown.Text;
+                WasteData.wasteData[ViewWasteWasteIDComboBox.Text][2] = UnitComboBox.Text;
+                WasteData.wasteData[ViewWasteWasteIDComboBox.Text][3] = ExclusiveToRoomCheckBox.Checked.ToString();
+                WasteData.wasteData[ViewWasteWasteIDComboBox.Text][4] = HazardousCheckBox.Checked.ToString();
+                MessageBox.Show($"Updated WasteID {ViewWasteWasteIDComboBox.Text}", "Billing",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -61,19 +66,22 @@ namespace Demolition_Planing_Tool
             }
         }
 
+        // Open form for new waste
         private void CreateNewWasteButton_Click(object sender, EventArgs e)
         {
             new CreateNewWasteForm().ShowDialog();
         }
 
+        // Render when dropdown in case we have new waste
         private void ViewWasteWasteIDComboBox_DropDown(object sender, EventArgs e)
         {
             foreach (var item in WasteData.wasteData)
             {
-                ViewBillingWasteIDComboBox.Items.Add(item.Key);
+                ViewWasteWasteIDComboBox.Items.Add(item.Key);
             }
         }
-
+        
+        // Update description for unit
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UnitTextBox.Text = WasteData.unitData[UnitComboBox.Text];

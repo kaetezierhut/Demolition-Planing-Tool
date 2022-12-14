@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
-    [Serializable]
     public class Floor
     {
         private List<Waste> floorWaste;
@@ -22,12 +21,12 @@ namespace Demolition_Planing_Tool
         public double ComputeBillingFloor()
         {
             double billingFloor = 0;
-
+            // Get bliing for rooms on the floor
             foreach (Room room in rooms)
             {
                 billingFloor += room.ComputeBillingRoom();
             }
-
+            // Get billing for waste within the floor
             foreach (Waste waste in floorWaste)
             {
                 billingFloor += waste.Quantities * waste.Billing;
@@ -66,6 +65,7 @@ namespace Demolition_Planing_Tool
             return floorWaste;
         }
 
+        // JSON Serialization, see documentation for more details
         public string Serialize()
         {
             string floorSerialized = "{";

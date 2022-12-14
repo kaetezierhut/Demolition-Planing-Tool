@@ -17,6 +17,7 @@ namespace Demolition_Planing_Tool.Forms
             InitializeComponent();
         }
 
+        // Reder Unit at load
         private void CreateNewWasteForm_Load(object sender, EventArgs e)
         {
             foreach (var item in WasteData.unitData)
@@ -25,6 +26,7 @@ namespace Demolition_Planing_Tool.Forms
             }
         }
 
+        // Info Box for each unit according to DIN
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UnitTextBox.Text = WasteData.unitData[UnitComboBox.Text];
@@ -32,6 +34,7 @@ namespace Demolition_Planing_Tool.Forms
         
         private void CreateNewWasteButton_Click(object sender, EventArgs e)
         {
+            // Make sure the wasteID only have number and space
             try
             {
                 int wasteID = int.Parse(WasteIDTextBox.Text.Replace(" ", ""));
@@ -44,6 +47,7 @@ namespace Demolition_Planing_Tool.Forms
             }
             if (UnitComboBox.SelectedIndex > -1)
             {
+                // Add it to our data
                 WasteData.wasteData.Add(
                 WasteIDTextBox.Text, new string[] {NameTextBox.Text, BillingUpDown.Text,
                     UnitComboBox.Text, ExclusiveToRoomCheckBox.Checked.ToString(), HazardousCheckBox.Checked.ToString()}

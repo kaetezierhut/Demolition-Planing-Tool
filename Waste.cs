@@ -21,8 +21,10 @@ namespace Demolition_Planing_Tool
         {
             this.wasteID = wasteID;
             quantities = quatities;
+
+            // Init other value from wasteID
             var wasteValue = WasteData.wasteData[wasteID];
-            billing = double.Parse(wasteValue[1], System.Globalization.CultureInfo.InvariantCulture);
+            billing = double.Parse(wasteValue[1]);
             unit = wasteValue[2];
             roomExclusive = bool.Parse(wasteValue[3]);
             hazardous = bool.Parse(wasteValue[4]);

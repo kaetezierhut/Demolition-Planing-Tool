@@ -331,9 +331,9 @@
             this.ViewBilling.Name = "ViewBilling";
             this.ViewBilling.Size = new System.Drawing.Size(141, 23);
             this.ViewBilling.TabIndex = 33;
-            this.ViewBilling.Text = "View Billing";
+            this.ViewBilling.Text = "View Waste";
             this.ViewBilling.UseVisualStyleBackColor = true;
-            this.ViewBilling.Click += new System.EventHandler(this.ViewBilling_Click);
+            this.ViewBilling.Click += new System.EventHandler(this.ViewWaste_Click);
             // 
             // EditBuildingInfoButton
             // 

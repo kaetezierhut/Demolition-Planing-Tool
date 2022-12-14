@@ -18,17 +18,21 @@ namespace Demolition_Planing_Tool
         private string city;
         private string ownerName;
 
-        public Building(string buildingName, string streetName, string city, string ownerName, int nrFloors, int nrRoomsPerFloor)
+        public Building(string buildingName, string streetName, string city, 
+            string ownerName, int nrFloors, int nrRoomsPerFloor)
         {
             this.buildingName = buildingName;
             this.streetName = streetName;
             this.city = city;
             this.ownerName = ownerName;
+
+            // Init floor
             floors = new List<Floor>(nrFloors);
             for (var i = 0; i < nrFloors; i++)
             {
                 floors.Add(new Floor());
             }
+            // Init rooms per floor
             foreach (Floor floor in floors)
             {
                 floor.AddRoom(nrRoomsPerFloor);
@@ -79,6 +83,7 @@ namespace Demolition_Planing_Tool
             return billingBuilding;
         }
 
+        // JSON Serialization, see documentation for more details
         public string Serialize()
         {
             string buildingInfo = JsonConvert.SerializeObject(this).Replace("}", "");

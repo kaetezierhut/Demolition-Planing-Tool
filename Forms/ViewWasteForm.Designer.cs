@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label9 = new System.Windows.Forms.Label();
-            this.ViewBillingWasteIDComboBox = new System.Windows.Forms.ComboBox();
+            this.ViewWasteWasteIDComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,15 +53,15 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "WasteID";
             // 
-            // ViewBillingWasteIDComboBox
+            // ViewWasteWasteIDComboBox
             // 
-            this.ViewBillingWasteIDComboBox.FormattingEnabled = true;
-            this.ViewBillingWasteIDComboBox.Location = new System.Drawing.Point(106, 26);
-            this.ViewBillingWasteIDComboBox.Name = "ViewBillingWasteIDComboBox";
-            this.ViewBillingWasteIDComboBox.Size = new System.Drawing.Size(121, 21);
-            this.ViewBillingWasteIDComboBox.TabIndex = 9;
-            this.ViewBillingWasteIDComboBox.DropDown += new System.EventHandler(this.ViewWasteWasteIDComboBox_DropDown);
-            this.ViewBillingWasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.ViewWasteWasteIDComboBox_SelectedIndexChanged);
+            this.ViewWasteWasteIDComboBox.FormattingEnabled = true;
+            this.ViewWasteWasteIDComboBox.Location = new System.Drawing.Point(106, 26);
+            this.ViewWasteWasteIDComboBox.Name = "ViewWasteWasteIDComboBox";
+            this.ViewWasteWasteIDComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ViewWasteWasteIDComboBox.TabIndex = 9;
+            this.ViewWasteWasteIDComboBox.DropDown += new System.EventHandler(this.ViewWasteWasteIDComboBox_DropDown);
+            this.ViewWasteWasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.ViewWasteWasteIDComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -189,7 +189,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.ViewBillingWasteIDComboBox);
+            this.Controls.Add(this.ViewWasteWasteIDComboBox);
             this.Controls.Add(this.label9);
             this.Name = "ViewWasteForm";
             this.Text = "ViewWasteForm";
@@ -203,7 +203,7 @@
         #endregion
 
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox ViewBillingWasteIDComboBox;
+        private System.Windows.Forms.ComboBox ViewWasteWasteIDComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;

@@ -21,6 +21,7 @@ namespace Demolition_Planing_Tool
             InitializeComponent();
         }
 
+        // Init info for the building and load the edit form
         private void StartPlanningButton_Click(object sender, EventArgs e)
         {
             string buildingName = BuildingNameBox.Text;
@@ -29,6 +30,8 @@ namespace Demolition_Planing_Tool
             string ownerName = OwnerNameTextBox.Text;
             int numberOfFloors = 0;
             int numberOfRoomsPerFloor = 0;
+
+            // Make sure building name, floor number, room number are init
             try
             {
                 numberOfFloors = int.Parse(NumberFloorBox.Text);
@@ -64,6 +67,7 @@ namespace Demolition_Planing_Tool
             else
             {
                 Building building = new Building(buildingName, streetName, city, ownerName, numberOfFloors, numberOfRoomsPerFloor);
+                // Open compute form after creating building
                 new ComputeForm(building, numberOfFloors).ShowDialog();
             }
         }
@@ -71,6 +75,7 @@ namespace Demolition_Planing_Tool
         private void LoadDocuButton_Click(object sender, EventArgs e)
         {
             string textzh;
+            // Opendialog to select previous session
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.Cancel)
             {
@@ -78,10 +83,13 @@ namespace Demolition_Planing_Tool
             }
             else
             {
+                // Read the text
                 using (StreamReader sr = new StreamReader(openFileDialog1.FileName)) {
                     textzh = sr.ReadToEnd();
                 }
+                // parse the JSON file
                 JObject loaded = JObject.Parse(textzh);
+                // Create Building object from json include floor and room
                 Building building = new Building(
                     loaded["BuildingName"].ToString(),
                     loaded["StreetName"].ToString(),
@@ -90,7 +98,10 @@ namespace Demolition_Planing_Tool
                     loaded["floors"].Count(),
                     loaded["floors"]["0"]["rooms"].Count()
                 );
+                // load the previous wasteData
                 WasteData.wasteData = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(loaded["wasteData"].ToString());
+                
+                // Assign waste object to correct floor and building 
                 foreach (var floor in loaded["floors"])
                 {
                     string floorIndex = ((JProperty) (floor)).Name;
