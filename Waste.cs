@@ -25,6 +25,7 @@ namespace Demolition_Planing_Tool
             billing = double.Parse(wasteValue[1], System.Globalization.CultureInfo.InvariantCulture);
             unit = wasteValue[2];
             roomExclusive = bool.Parse(wasteValue[3]);
+            hazardous = bool.Parse(wasteValue[4]);
         }
 
         public string WasteID

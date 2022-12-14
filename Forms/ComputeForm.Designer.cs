@@ -59,6 +59,7 @@
             this.ViewBilling = new System.Windows.Forms.Button();
             this.EditBuildingInfoButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,7 +119,7 @@
             // 
             // SaveDocumentButton
             // 
-            this.SaveDocumentButton.Location = new System.Drawing.Point(755, 401);
+            this.SaveDocumentButton.Location = new System.Drawing.Point(843, 401);
             this.SaveDocumentButton.Name = "SaveDocumentButton";
             this.SaveDocumentButton.Size = new System.Drawing.Size(141, 23);
             this.SaveDocumentButton.TabIndex = 12;
@@ -175,7 +176,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(269, 84);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(627, 238);
+            this.listBox1.Size = new System.Drawing.Size(715, 238);
             this.listBox1.TabIndex = 18;
             // 
             // DeleteButton
@@ -190,7 +191,7 @@
             // 
             // ExportPDFButton
             // 
-            this.ExportPDFButton.Location = new System.Drawing.Point(755, 344);
+            this.ExportPDFButton.Location = new System.Drawing.Point(843, 343);
             this.ExportPDFButton.Name = "ExportPDFButton";
             this.ExportPDFButton.Size = new System.Drawing.Size(141, 23);
             this.ExportPDFButton.TabIndex = 20;
@@ -291,7 +292,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(545, 72);
+            this.label9.Location = new System.Drawing.Point(537, 72);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 29;
@@ -309,7 +310,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(752, 72);
+            this.label11.Location = new System.Drawing.Point(745, 72);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(26, 13);
             this.label11.TabIndex = 31;
@@ -347,17 +348,27 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(836, 72);
+            this.label13.Location = new System.Drawing.Point(935, 72);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 13);
             this.label13.TabIndex = 35;
             this.label13.Text = "Billing (€)";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(825, 72);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(58, 13);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "Hazardous";
+            // 
             // ComputeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 450);
+            this.ClientSize = new System.Drawing.Size(996, 450);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.EditBuildingInfoButton);
             this.Controls.Add(this.ViewBilling);
@@ -420,6 +431,7 @@
         private System.Windows.Forms.Button ViewBilling;
         private System.Windows.Forms.Button EditBuildingInfoButton;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }
 

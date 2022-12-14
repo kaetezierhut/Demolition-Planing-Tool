@@ -1,6 +1,6 @@
 ﻿namespace Demolition_Planing_Tool
 {
-    partial class ViewBillingForm
+    partial class ViewWasteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.UpdateBillingButton = new System.Windows.Forms.Button();
+            this.UpdateWasteButton = new System.Windows.Forms.Button();
             this.BillingUpDown = new System.Windows.Forms.NumericUpDown();
             this.CreateNewWasteButton = new System.Windows.Forms.Button();
             this.UnitComboBox = new System.Windows.Forms.ComboBox();
@@ -60,8 +60,8 @@
             this.ViewBillingWasteIDComboBox.Name = "ViewBillingWasteIDComboBox";
             this.ViewBillingWasteIDComboBox.Size = new System.Drawing.Size(121, 21);
             this.ViewBillingWasteIDComboBox.TabIndex = 9;
-            this.ViewBillingWasteIDComboBox.DropDown += new System.EventHandler(this.ViewBillingWasteIDComboBox_DropDown);
-            this.ViewBillingWasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.ViewBillingWasteIDComboBox_SelectedIndexChanged);
+            this.ViewBillingWasteIDComboBox.DropDown += new System.EventHandler(this.ViewWasteWasteIDComboBox_DropDown);
+            this.ViewBillingWasteIDComboBox.SelectedIndexChanged += new System.EventHandler(this.ViewWasteWasteIDComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -77,7 +77,6 @@
             this.NameTextBox.Location = new System.Drawing.Point(107, 53);
             this.NameTextBox.Multiline = true;
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(360, 76);
             this.NameTextBox.TabIndex = 13;
             // 
@@ -99,15 +98,15 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Unit";
             // 
-            // UpdateBillingButton
+            // UpdateWasteButton
             // 
-            this.UpdateBillingButton.Location = new System.Drawing.Point(359, 205);
-            this.UpdateBillingButton.Name = "UpdateBillingButton";
-            this.UpdateBillingButton.Size = new System.Drawing.Size(108, 23);
-            this.UpdateBillingButton.TabIndex = 19;
-            this.UpdateBillingButton.Text = "Update Billing";
-            this.UpdateBillingButton.UseVisualStyleBackColor = true;
-            this.UpdateBillingButton.Click += new System.EventHandler(this.UpdateBillingButton_Click);
+            this.UpdateWasteButton.Location = new System.Drawing.Point(359, 205);
+            this.UpdateWasteButton.Name = "UpdateWasteButton";
+            this.UpdateWasteButton.Size = new System.Drawing.Size(108, 23);
+            this.UpdateWasteButton.TabIndex = 19;
+            this.UpdateWasteButton.Text = "Update Waste";
+            this.UpdateWasteButton.UseVisualStyleBackColor = true;
+            this.UpdateWasteButton.Click += new System.EventHandler(this.UpdateWasteButton_Click);
             // 
             // BillingUpDown
             // 
@@ -174,7 +173,7 @@
             this.ExclusiveToRoomCheckBox.Text = "Exclusive to Room";
             this.ExclusiveToRoomCheckBox.UseVisualStyleBackColor = true;
             // 
-            // ViewBillingForm
+            // ViewWasteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,16 +184,16 @@
             this.Controls.Add(this.UnitComboBox);
             this.Controls.Add(this.CreateNewWasteButton);
             this.Controls.Add(this.BillingUpDown);
-            this.Controls.Add(this.UpdateBillingButton);
+            this.Controls.Add(this.UpdateWasteButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ViewBillingWasteIDComboBox);
             this.Controls.Add(this.label9);
-            this.Name = "ViewBillingForm";
-            this.Text = "ViewBillingForm";
-            this.Load += new System.EventHandler(this.ViewBillingForm_Load);
+            this.Name = "ViewWasteForm";
+            this.Text = "ViewWasteForm";
+            this.Load += new System.EventHandler(this.ViewWasteForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BillingUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,7 +208,7 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button UpdateBillingButton;
+        private System.Windows.Forms.Button UpdateWasteButton;
         private System.Windows.Forms.NumericUpDown BillingUpDown;
         private System.Windows.Forms.Button CreateNewWasteButton;
         private System.Windows.Forms.ComboBox UnitComboBox;

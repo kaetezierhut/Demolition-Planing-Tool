@@ -1,230 +1,267 @@
 {
-  "11": [
-    "Beton",
+  "17 01 01": [
+    "concrete",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 01 02": [
+    "bricks",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 01 03": [
+    "tiles and ceramix",
+    "122",
+    "kg",
+    "false"
+  ],
+  "17 01 06": [
+    "Mixtures of or separate fractions of concrete, bricks, tiles and ceramics containing hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "12": [
-    "Beton",
+  "17 01 07": [
+    "mixtures of concrete, bricks, tiles and ceramics other than those mentioned in 17 01 06",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 02 01": [
+    "wood",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 02 02": [
+    "glass",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 02 03": [
+    "plastics",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 02 04": [
+    "glass, plastics and wood containing hazardous substances or are contaminated by hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "13": [
-    "Beton",
+  "17 03 01": [
+    "coal tar bitumen mixtures",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "16": [
-    "Beton",
+  "17 03 02": [
+    "bitume mixtures other than those mentioned in 17 03 01",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 03 03": [
+    "coal tar and tar-containing products",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "17": [
-    "Beton",
+  "17 04 01": [
+    "copper, bronze, brass",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 04 02": [
+    "aluminium",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 03": [
+    "lead",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 04": [
+    "zinc",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 05": [
+    "iron and steel",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 06": [
+    "tin",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 07": [
+    "mixed metals",
+    "122",
+    "kg",
+    "true",
+    "false"
+  ],
+  "17 04 09": [
+    "Metal wastes contaminated by hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "21": [
-    "Beton",
+  "17 04 10": [
+    "cables containing oil, coal tar or other hazardous substances",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "22": [
-    "Beton",
+  "17 04 11": [
+    "cables other than those mentioned in 17 04 10",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 05 03": [
+    "soil and stones containing hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "23": [
-    "Beton",
+  "17 05 04": [
+    "soil and stones other than those mentioned in 17 05 03",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 05 05": [
+    "Dredged material containing hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "24": [
-    "Beton",
+  "17 05 06": [
+    "Dredged material other than those mentioned in 17 05 05",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 05 07": [
+    "Track ballast containing hazardous substances",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "31": [
-    "Beton",
+  "17 05 08": [
+    "track ballast other than those mentioned in 17 05 07",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 06 01": [
+    "Insulation material containing asbestos",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "32": [
-    "Beton",
+  "17 06 03": [
+    "other insulation material containing hazardous or similar substances",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "41": [
-    "Beton",
+  "17 06 04": [
+    "Insulation material other than those mentioned in 17 06 01 and 17 06 03",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 06 05": [
+    "asbestos-containing building materials",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "42": [
-    "Beton",
+  "17 08 01": [
+    "Gypsum-based building materials contaminated by hazardous substances",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "43": [
-    "Beton",
+  "17 08 02": [
+    "Gypsum-based building materials other than those mentioned in 17 08 01",
     "122",
     "kg",
+    "true",
+    "false"
+  ],
+  "17 09 01": [
+    "Construction and demolition waste containing mercury",
+    "122",
+    "kg",
+    "true",
     "true"
   ],
-  "44": [
-    "Beton",
+  "17 09 02": [
+    "e.g. PCB-containing sealants, PCB-containing resin-based floor coverings, PCB-containing insulating glazing, PCB-containing condensers",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "45": [
-    "Beton",
+  "17 09 03": [
+    "other construction and demolition wastes (including mixed wastes) containing hazardous substances",
     "122",
     "kg",
+    "true",
     "true"
   ],
-  "46": [
-    "Beton",
+  "17 09 04": [
+    "mixed construction and demolition wastes other than those mentioned in 17 09 01, 17 09 02 and 17 09 03",
     "122",
     "kg",
-    "true"
-  ],
-  "47": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "48": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "49": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "410": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "411": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "53": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "54": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "55": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "56": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "57": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "58": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "61": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "63": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "64": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "65": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "81": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "82": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "91": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "92": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "93": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
-  ],
-  "94": [
-    "Beton",
-    "122",
-    "kg",
-    "true"
+    "true",
+    "false"
   ]
 }

@@ -46,7 +46,7 @@ namespace Demolition_Planing_Tool.Forms
             {
                 WasteData.wasteData.Add(
                 WasteIDTextBox.Text, new string[] {NameTextBox.Text, BillingUpDown.Text,
-                    UnitComboBox.Text, ExclusiveToRoomCheckBox.Checked.ToString()}
+                    UnitComboBox.Text, ExclusiveToRoomCheckBox.Checked.ToString(), HazardousCheckBox.Checked.ToString()}
                 );
                 MessageBox.Show($"Added new WasteID", "Billing",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -10,7 +10,6 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
-using Newtonsoft.Json;
 
 namespace Demolition_Planing_Tool
 {
@@ -76,10 +75,10 @@ namespace Demolition_Planing_Tool
         }
 
         private void UpdateListBox(string wasteID, dynamic floorIndex, dynamic roomIndex, 
-            dynamic quantities, dynamic billingPerUnit, string Unit, dynamic billing)
+            dynamic quantities, dynamic billingPerUnit, string Unit, dynamic Hazardous, dynamic billing)
         {
             listBox1.Items.Add($"{wasteID}\t\t{floorIndex}\t\t{roomIndex}\t\t" +
-                            $"{quantities}\t\t{billingPerUnit}\t\t{Unit}\t\t{billing}");
+                            $"{quantities}\t\t{billingPerUnit}\t\t{Unit}\t\t{Hazardous}\t\t{billing}");
         }
 
         private void AddQuantitiesButton_Click(object sender, EventArgs e)
@@ -108,14 +107,20 @@ namespace Demolition_Planing_Tool
                                     "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-
+                        string exc = WasteData.wasteData[WasteIDComboBox.Text][3];
+                        if (bool.Parse(exc))
+                        {
+                            MessageBox.Show("This waste belong exclusively to room, please choose other waste",
+                                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                         Waste waste = new Waste(WasteIDComboBox.Text, quantities);
                         var floorIndex = FloorNumberComboBox.SelectedIndex;
                         var selectedFloor = building.GetIndividualFloor(floorIndex);
                         selectedFloor.AddWaste(waste);
                         itemBox.Add(waste);
                         UpdateListBox(WasteIDComboBox.Text, floorIndex, "None", quantities,
-                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
+                            waste.Billing, waste.Unit, waste.Hazardous ? "yes": "no", waste.Billing * waste.Quantities);
                     }
                     else
                     {
@@ -166,7 +171,7 @@ namespace Demolition_Planing_Tool
                             selectedRoom.AddWaste(waste);
                             itemBox.Add(waste);
                             UpdateListBox(WasteIDComboBox.Text, floorIndex, roomIndex, quantities,
-                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
+                            waste.Billing, waste.Unit, waste.Hazardous ? "yes" : "no", waste.Billing * waste.Quantities);
                         }
                         else
                         {
@@ -234,7 +239,7 @@ namespace Demolition_Planing_Tool
                 WasteIDComboBox.Items.Add(item.Key);
             }
             PlaceHolderName.Text = $"Building: {building.BuildingName}, " +
-                $"{building.GetFloors().Count} floors, max number of floors {maxNumberOfFloors}";
+                $"{building.GetFloors().Count} floors";
 
             if (load)
             {
@@ -244,8 +249,8 @@ namespace Demolition_Planing_Tool
                     foreach (var waste in floor.GetWasteList())
                     {
                         itemBox.Add(waste);
-                        UpdateListBox(WasteIDComboBox.Text, floorIndex, "None", waste.Quantities,
-                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
+                        UpdateListBox(waste.WasteID, floorIndex, "None", waste.Quantities,
+                            waste.Billing, waste.Unit, waste.Hazardous ? "yes" : "no", waste.Billing * waste.Quantities);
                     }
                     foreach (var room in floor.GetRoomsList())
                     {
@@ -253,8 +258,8 @@ namespace Demolition_Planing_Tool
                         foreach (var waste in room.GetRoomWaste())
                         {
                             itemBox.Add(waste);
-                            UpdateListBox(WasteIDComboBox.Text, floorIndex, roomInxdex, waste.Quantities,
-                            waste.Billing, waste.Unit, waste.Billing * waste.Quantities);
+                            UpdateListBox(waste.WasteID, floorIndex, roomInxdex, waste.Quantities,
+                            waste.Billing, waste.Unit, waste.Hazardous ? "yes" : "no", waste.Billing * waste.Quantities);
                         }
                     }
                 }
@@ -311,9 +316,10 @@ namespace Demolition_Planing_Tool
                 .SetTextAlignment(TextAlignment.CENTER)
                 .SetFontSize(14));
 
-            Table table = new Table(7, false);
+            Table table = new Table(8, false);
 
-            string[] labels = {"WasteID", "Floor", "Room", "Quantities", "Billing/Unit", "Unit", "Billing"};
+            string[] labels = {"WasteID", "Floor", "Room", "Quantities", "Billing/Unit (€)", 
+                "Unit", "Hazardous","Billing (€)"};
             for (int i = 0; i < labels.Length; i++)
             {
                 table.AddCell(new Cell(1, 1)
@@ -396,6 +402,8 @@ namespace Demolition_Planing_Tool
             );
             
             document.Add(table);
+            ComputeTotalCost_Click(sender, e);
+            document.Add(new Paragraph($"Total Cost: {TotalCost.Text}"));
             document.Close();
             MessageBox.Show("PDF Exported", "OK",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -403,7 +411,7 @@ namespace Demolition_Planing_Tool
 
         private void ViewBilling_Click(object sender, EventArgs e)
         {
-            new ViewBillingForm().ShowDialog();
+            new ViewWasteForm().ShowDialog();
         }
 
         private void EditBuildingInfoButton_Click(object sender, EventArgs e)

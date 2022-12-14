@@ -71,7 +71,6 @@ namespace Demolition_Planing_Tool
         private void LoadDocuButton_Click(object sender, EventArgs e)
         {
             string textzh;
-            Debug.WriteLine(JsonConvert.SerializeObject(WasteData.wasteData, Formatting.Indented));
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.Cancel)
             {

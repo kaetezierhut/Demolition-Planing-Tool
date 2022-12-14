@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace Demolition_Planing_Tool
 {
-    public partial class ViewBillingForm : Form
+    public partial class ViewWasteForm : Form
     {
-        public ViewBillingForm()
+        public ViewWasteForm()
         {
             InitializeComponent();
         }
 
-        private void ViewBillingForm_Load(object sender, EventArgs e)
+        private void ViewWasteForm_Load(object sender, EventArgs e)
         {
             foreach (var item in WasteData.unitData)
             {
@@ -27,7 +27,7 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        private void ViewBillingWasteIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ViewWasteWasteIDComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             BillingUpDown.Enabled = true;
             UnitComboBox.Enabled = true;
@@ -39,15 +39,18 @@ namespace Demolition_Planing_Tool
             BillingUpDown.Text = loaded[1];
             UnitComboBox.Text = loaded[2];
             ExclusiveToRoomCheckBox.Checked = bool.Parse(loaded[3]);
+            HazardousCheckBox.Checked = bool.Parse(loaded[4]);
             UnitTextBox.Text = WasteData.unitData[UnitComboBox.Text];
         }
 
-        private void UpdateBillingButton_Click(object sender, EventArgs e)
+        private void UpdateWasteButton_Click(object sender, EventArgs e)
         {
             if (BillingUpDown.Enabled)
             {
                 WasteData.wasteData[ViewBillingWasteIDComboBox.Text][1] = BillingUpDown.Text;
                 WasteData.wasteData[ViewBillingWasteIDComboBox.Text][2] = UnitComboBox.Text;
+                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][3] = ExclusiveToRoomCheckBox.Checked.ToString();
+                WasteData.wasteData[ViewBillingWasteIDComboBox.Text][4] = HazardousCheckBox.Checked.ToString();
                 MessageBox.Show($"Updated WasteID {ViewBillingWasteIDComboBox.Text}", "Billing",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -63,7 +66,7 @@ namespace Demolition_Planing_Tool
             new CreateNewWasteForm().ShowDialog();
         }
 
-        private void ViewBillingWasteIDComboBox_DropDown(object sender, EventArgs e)
+        private void ViewWasteWasteIDComboBox_DropDown(object sender, EventArgs e)
         {
             foreach (var item in WasteData.wasteData)
             {
