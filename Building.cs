@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace Demolition_Planing_Tool
 {
-    [Serializable]
     public class Building
     {
         private List<Floor> floors;
@@ -18,7 +17,7 @@ namespace Demolition_Planing_Tool
         private string city;
         private string ownerName;
 
-        public Building(string buildingName, string streetName, string city, 
+        public Building(string buildingName, string streetName, string city,
             string ownerName, int nrFloors, int nrRoomsPerFloor)
         {
             this.buildingName = buildingName;
@@ -62,7 +61,7 @@ namespace Demolition_Planing_Tool
             get { return ownerName; }
             set { ownerName = value; }
         }
-        
+
         public List<Floor> GetFloors()
         {
             return floors;
@@ -73,6 +72,7 @@ namespace Demolition_Planing_Tool
             return floors[index];
         }
 
+        // Method computing the cost
         public double ComputeBillingBuilding()
         {
             double billingBuilding = 0;
@@ -83,7 +83,14 @@ namespace Demolition_Planing_Tool
             return billingBuilding;
         }
 
-        // JSON Serialization, see documentation for more details
+        // JSON Serialization
+        // structure of the JSON file
+        // Building attributes
+        // Floors in Building
+        // Waste in each floor
+        // Rooms in each floor
+        // Waste in each room
+        // WasteData
         public string Serialize()
         {
             string buildingInfo = JsonConvert.SerializeObject(this).Replace("}", "");

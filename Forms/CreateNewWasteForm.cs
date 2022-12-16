@@ -17,7 +17,7 @@ namespace Demolition_Planing_Tool.Forms
             InitializeComponent();
         }
 
-        // Reder Unit at load
+        // Add unit data to combobox when loading the form
         private void CreateNewWasteForm_Load(object sender, EventArgs e)
         {
             foreach (var item in WasteData.unitData)
@@ -31,7 +31,7 @@ namespace Demolition_Planing_Tool.Forms
         {
             UnitTextBox.Text = WasteData.unitData[UnitComboBox.Text];
         }
-        
+
         private void CreateNewWasteButton_Click(object sender, EventArgs e)
         {
             // Make sure the wasteID only have number and space
@@ -47,7 +47,7 @@ namespace Demolition_Planing_Tool.Forms
             }
             if (UnitComboBox.SelectedIndex > -1)
             {
-                // Add it to our data
+                // Add it to the data
                 WasteData.wasteData.Add(
                 WasteIDTextBox.Text, new string[] {NameTextBox.Text, BillingUpDown.Text,
                     UnitComboBox.Text, ExclusiveToRoomCheckBox.Checked.ToString(), HazardousCheckBox.Checked.ToString()}
@@ -59,7 +59,7 @@ namespace Demolition_Planing_Tool.Forms
             {
                 MessageBox.Show("Please select Unit tpye", "Warning",
                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }   
+            }
         }
     }
 }

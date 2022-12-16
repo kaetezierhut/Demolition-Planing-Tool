@@ -16,13 +16,13 @@ namespace Demolition_Planing_Tool
         private string unit;
         private bool hazardous;
         private int quantities = 0;
-        
+
         public Waste(string wasteID, int quatities)
         {
             this.wasteID = wasteID;
             quantities = quatities;
 
-            // Init other value from wasteID
+            // Initiate other value from wasteID
             var wasteValue = WasteData.wasteData[wasteID];
             billing = double.Parse(wasteValue[1]);
             unit = wasteValue[2];
@@ -30,25 +30,26 @@ namespace Demolition_Planing_Tool
             hazardous = bool.Parse(wasteValue[4]);
         }
 
+        // getter and setter of the attributes
         public string WasteID
-        { 
-            get { return wasteID; } 
+        {
+            get { return wasteID; }
             set { wasteID = value; }
         }
 
         public double Billing
-        { 
-            get { return billing; }
-            set { billing = value; } 
-        }
-        
-        public int Quantities 
         {
-            get { return quantities; }
-            set { quantities = value; } 
+            get { return billing; }
+            set { billing = value; }
         }
 
-        public bool RoomExclusive 
+        public int Quantities
+        {
+            get { return quantities; }
+            set { quantities = value; }
+        }
+
+        public bool RoomExclusive
         {
             get { return roomExclusive; }
             set { roomExclusive = value; }
@@ -66,6 +67,7 @@ namespace Demolition_Planing_Tool
             set { hazardous = value; }
         }
 
+        // Method serialization
         public string Serialize()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);

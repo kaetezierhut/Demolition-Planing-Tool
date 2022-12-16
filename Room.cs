@@ -12,8 +12,9 @@ namespace Demolition_Planing_Tool
     {
         private List<Waste> roomWaste;
 
-        public Room() { roomWaste = new List<Waste>();}
+        public Room() { roomWaste = new List<Waste>(); }
 
+        // Computing the cost of the room
         public double ComputeBillingRoom()
         {
             double billingRoom = 0;
@@ -24,21 +25,25 @@ namespace Demolition_Planing_Tool
             return billingRoom;
         }
 
-        public void AddWaste(Waste waste) 
+        // Adding waste to the room
+        public void AddWaste(Waste waste)
         {
             roomWaste.Add(waste);
         }
 
+        // Removing waste from the room
         public void RemoveWaste(Waste waste)
         {
             roomWaste.Remove(waste);
         }
 
+        // Get list of waste in the room
         public List<Waste> GetRoomWaste()
         {
             return roomWaste;
         }
 
+        // JSON Serialization of the waste (list of waste) in the room
         public string Serialize()
         {
             return JsonConvert.SerializeObject(roomWaste);

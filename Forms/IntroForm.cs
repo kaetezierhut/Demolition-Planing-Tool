@@ -21,7 +21,7 @@ namespace Demolition_Planing_Tool
             InitializeComponent();
         }
 
-        // Init info for the building and load the edit form
+        // Initialize info for the building and load the edit form
         private void StartPlanningButton_Click(object sender, EventArgs e)
         {
             string buildingName = BuildingNameBox.Text;
@@ -31,7 +31,7 @@ namespace Demolition_Planing_Tool
             int numberOfFloors = 0;
             int numberOfRoomsPerFloor = 0;
 
-            // Make sure building name, floor number, room number are init
+            // Make sure building name, floor number, room number are initialized
             try
             {
                 numberOfFloors = int.Parse(NumberFloorBox.Text);
@@ -84,7 +84,8 @@ namespace Demolition_Planing_Tool
             else
             {
                 // Read the text
-                using (StreamReader sr = new StreamReader(openFileDialog1.FileName)) {
+                using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                {
                     textzh = sr.ReadToEnd();
                 }
                 // parse the JSON file
@@ -100,11 +101,11 @@ namespace Demolition_Planing_Tool
                 );
                 // load the previous wasteData
                 WasteData.wasteData = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(loaded["wasteData"].ToString());
-                
+
                 // Assign waste object to correct floor and building 
                 foreach (var floor in loaded["floors"])
                 {
-                    string floorIndex = ((JProperty) (floor)).Name;
+                    string floorIndex = ((JProperty)(floor)).Name;
                     Floor buildingFloor = building.GetIndividualFloor(int.Parse(floorIndex));
                     foreach (var waste in ((JProperty)(floor)).Value["floorWaste"])
                     {

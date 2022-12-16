@@ -19,7 +19,7 @@ namespace Demolition_Planing_Tool
             InitializeComponent();
         }
 
-        // Render Unit at load
+        // Add unit data to combobox when loading the form
         private void ViewWasteForm_Load(object sender, EventArgs e)
         {
             foreach (var item in WasteData.unitData)
@@ -37,7 +37,7 @@ namespace Demolition_Planing_Tool
             HazardousCheckBox.Enabled = true;
             ExclusiveToRoomCheckBox.Enabled = true;
 
-            // Load their information datil
+            // Load the selected wasteID data
             string[] loaded = WasteData.wasteData[ViewWasteWasteIDComboBox.Text];
             NameTextBox.Text = loaded[0];
             BillingUpDown.Text = loaded[1];
@@ -49,7 +49,7 @@ namespace Demolition_Planing_Tool
 
         private void UpdateWasteButton_Click(object sender, EventArgs e)
         {
-            // Change only when selected wasteid
+            // Change only when the wasteID is selected
             if (ViewWasteWasteIDComboBox.SelectedIndex > -1)
             {
                 WasteData.wasteData[ViewWasteWasteIDComboBox.Text][1] = BillingUpDown.Text;
@@ -72,7 +72,7 @@ namespace Demolition_Planing_Tool
             new CreateNewWasteForm().ShowDialog();
         }
 
-        // Render when dropdown in case we have new waste
+        // Render WasteID dropdown in case new waste is added
         private void ViewWasteWasteIDComboBox_DropDown(object sender, EventArgs e)
         {
             foreach (var item in WasteData.wasteData)
@@ -80,7 +80,7 @@ namespace Demolition_Planing_Tool
                 ViewWasteWasteIDComboBox.Items.Add(item.Key);
             }
         }
-        
+
         // Update description for unit
         private void UnitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

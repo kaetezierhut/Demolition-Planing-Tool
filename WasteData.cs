@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Demolition_Planing_Tool
 {
+    // Data of all waste from AVV
     internal class WasteData
     {
         public static Dictionary<string, string[]> wasteData = new Dictionary<string, string[]>()
@@ -72,5 +73,5 @@ namespace Demolition_Planing_Tool
             {"kg", "0.5.6 Mass"},
             {"t", "0.5.6 Mass"},
         };
-    }   
+    }
 }

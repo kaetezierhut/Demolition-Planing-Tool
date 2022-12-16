@@ -12,12 +12,13 @@ namespace Demolition_Planing_Tool
     {
         private List<Waste> floorWaste;
         private List<Room> rooms;
-        public Floor() 
+        public Floor()
         {
             rooms = new List<Room>();
             floorWaste = new List<Waste>();
         }
 
+        // Computing coists for the floor
         public double ComputeBillingFloor()
         {
             double billingFloor = 0;
@@ -35,6 +36,7 @@ namespace Demolition_Planing_Tool
             return billingFloor;
         }
 
+        // Adding rooms to the floor
         public void AddRoom(int nrRoomsPerFloor)
         {
             for (int i = 0; i < nrRoomsPerFloor; i++)
@@ -43,29 +45,38 @@ namespace Demolition_Planing_Tool
             }
         }
 
+        // Adding waste to the floor
         public void AddWaste(Waste waste)
         {
             floorWaste.Add(waste);
         }
 
+        // Remove waste from the floor
         public void RemoveWaste(Waste waste)
         {
             floorWaste.Remove(waste);
         }
 
+        // Get list of room in floor
         public List<Room> GetRoomsList() { return rooms; }
 
+        // Get room in the floor from with their id
         public Room GetRoom(int id)
         {
             return rooms[id];
         }
 
+        // Get list of waste in floor
         public List<Waste> GetWasteList()
         {
             return floorWaste;
         }
 
-        // JSON Serialization, see documentation for more details
+        // JSON Serialization
+        // structure of the JSON file
+        // Waste in each floor
+        // Rooms in each floor
+        // Waste in each room
         public string Serialize()
         {
             string floorSerialized = "{";
@@ -77,7 +88,7 @@ namespace Demolition_Planing_Tool
                 {
                     roomSerialized += $"\"{rooms.IndexOf(room)}\": {room.Serialize()}";
                 }
-                else 
+                else
                 {
                     roomSerialized += $"\"{rooms.IndexOf(room)}\": {room.Serialize()},";
                 }
