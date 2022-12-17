@@ -379,7 +379,6 @@ namespace Demolition_Planing_Tool
 
             foreach (var id in WasteData.wasteData.Keys)
             {
-                int nu = 0;
                 Table table1 = new Table(8, false);
                 List<string[]> list1 = new List<string[]>();
 
@@ -389,13 +388,10 @@ namespace Demolition_Planing_Tool
                       .SetBackgroundColor(ColorConstants.GRAY)
                       .SetTextAlignment(TextAlignment.CENTER)
                       .Add(new Paragraph(labels[i])));
-
                 }
 
                 foreach (var str in strings)
                 {
-
-
                     if (str[0].Contains(id))
                     {
                         list1.Add(str);
@@ -413,6 +409,7 @@ namespace Demolition_Planing_Tool
 
                     int quantities1 = int.Parse(x1[3]);
                     int quantities2 = int.Parse(x2[3]);
+                    
                     if (floor1 < floor2)
                     {
                         return -1;
@@ -446,46 +443,41 @@ namespace Demolition_Planing_Tool
                     }
                 });
 
-                list1.ForEach(items => {
+                list1.ForEach(items =>
+                {
                     for (int i = 0; i < items.Length; i++)
                         table1.AddCell(new Cell(1, 1)
                              .SetTextAlignment(TextAlignment.CENTER)
                              .Add(new Paragraph(items[i])));
-                }
-            );
+                });
 
                 if (list1.Any())
                 {
                     document.Add(new Paragraph(id + " " + WasteData.wasteData[id][0])
-                .SetTextAlignment(TextAlignment.LEFT)
-                .SetFontSize(12)
-                .SetBold());
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetFontSize(12)
+                        .SetBold());
 
                     document.Add(table1);
 
                     document.Add(new Paragraph(" ")
-                .SetTextAlignment(TextAlignment.CENTER)
-                .SetFontSize(12));
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetFontSize(12));
                 }
-
-                nu++;
-
-                
             }
-
 
             document.Add(new Paragraph("--------------------")
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetFontSize(12));
 
+            ComputeTotalCost_Click(sender, e);
             document.Add(new Paragraph("Total Cost: " + TotalCost.Text)
                 .SetTextAlignment(TextAlignment.RIGHT)
                 .SetFontSize(12));
-
             document.Close();
+
             MessageBox.Show($"PDF Exported to {path}",
                 "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         // Open view waste Form
