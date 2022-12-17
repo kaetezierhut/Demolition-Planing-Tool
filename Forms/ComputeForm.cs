@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
 using Demolition_Planing_Tool.Forms;
@@ -10,6 +12,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace Demolition_Planing_Tool
 {
@@ -355,7 +358,7 @@ namespace Demolition_Planing_Tool
 
             Table table = new Table(8, false);
             // write listbox to pdf
-            string[] labels = {"WasteID", "Floor", "Room", "Quantities", "Billing/Unit (€)",
+            string[] labels = {"WasteID", "Floor", "Room","Quantities", "Billing/Unit (€)",
                 "Unit", "Hazardous","Billing (€)"};
             for (int i = 0; i < labels.Length; i++)
             {
@@ -367,36 +370,46 @@ namespace Demolition_Planing_Tool
 
             // Sort output by wasteID, floor, room
             List<string[]> strings = new List<string[]>();
+            List<string[]> strings_sorted = new List<string[]>();
 
             foreach (string temp in listBox1.Items)
             {
                 strings.Add(temp.Split(new[] { "\t\t" }, StringSplitOptions.None));
             }
 
-            strings.Sort((x1, x2) =>
+            foreach (var id in WasteData.wasteData.Keys)
             {
-                int floor1 = int.Parse(x1[1]);
-                int floor2 = int.Parse(x2[1]);
+                Table table1 = new Table(8, false);
+                List<string[]> list1 = new List<string[]>();
 
-                int room1 = x1[2] == "None" ? -1 : int.Parse(x1[2]);
-                int room2 = x2[2] == "None" ? -1 : int.Parse(x2[2]);
-
-                int wasteID1 = int.Parse(x1[0].Replace(" ", ""));
-                int wasteID2 = int.Parse(x2[0].Replace(" ", ""));
-
-                int quantities1 = int.Parse(x1[3]);
-                int quantities2 = int.Parse(x2[3]);
-
-                if (wasteID1 < wasteID2)
+                for (int i = 0; i < labels.Length; i++)
                 {
-                    return -1;
+                    table1.AddCell(new Cell(1, 1)
+                      .SetBackgroundColor(ColorConstants.GRAY)
+                      .SetTextAlignment(TextAlignment.CENTER)
+                      .Add(new Paragraph(labels[i])));
                 }
-                else if (wasteID1 > wasteID2)
+
+                foreach (var str in strings)
                 {
-                    return 1;
+                    if (str[0].Contains(id))
+                    {
+                        list1.Add(str);
+                        strings_sorted.Add(str);
+                    }
                 }
-                else
+
+                list1.Sort((x1, x2) =>
                 {
+                    int floor1 = int.Parse(x1[1]);
+                    int floor2 = int.Parse(x2[1]);
+
+                    int room1 = x1[2] == "None" ? -1 : int.Parse(x1[2]);
+                    int room2 = x2[2] == "None" ? -1 : int.Parse(x2[2]);
+
+                    int quantities1 = int.Parse(x1[3]);
+                    int quantities2 = int.Parse(x2[3]);
+                    
                     if (floor1 < floor2)
                     {
                         return -1;
@@ -428,22 +441,39 @@ namespace Demolition_Planing_Tool
                             else return 0;
                         }
                     }
+                });
+
+                list1.ForEach(items =>
+                {
+                    for (int i = 0; i < items.Length; i++)
+                        table1.AddCell(new Cell(1, 1)
+                             .SetTextAlignment(TextAlignment.CENTER)
+                             .Add(new Paragraph(items[i])));
+                });
+
+                if (list1.Any())
+                {
+                    document.Add(new Paragraph(id + " " + WasteData.wasteData[id][0])
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetFontSize(12)
+                        .SetBold());
+
+                    document.Add(table1);
+
+                    document.Add(new Paragraph(" ")
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .SetFontSize(12));
                 }
-            });
-
-            strings.ForEach(items => {
-                for (int i = 0; i < items.Length; i++)
-                    table.AddCell(new Cell(1, 1)
-                         .SetTextAlignment(TextAlignment.CENTER)
-                         .Add(new Paragraph(items[i])));
             }
-            );
 
-            document.Add(table);
+            document.Add(new Paragraph("--------------------")
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetFontSize(12));
 
-            // Write the totcal cost to PDF
             ComputeTotalCost_Click(sender, e);
-            document.Add(new Paragraph($"Total Cost: {TotalCost.Text}"));
+            document.Add(new Paragraph("Total Cost: " + TotalCost.Text)
+                .SetTextAlignment(TextAlignment.RIGHT)
+                .SetFontSize(12));
             document.Close();
 
             MessageBox.Show($"PDF Exported to {path}",
