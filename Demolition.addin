@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command Demolition Planing Tool</Text>
+    <Description>Some description for Demolition Planing Tool</Description>
+    <Assembly>C:\Users\Predator\OneDrive\Desktop\Engineering Informatics\Demolition Planing Tool\bin\Debug\Demolition Planing Tool.dll</Assembly>
+    <FullClassName>Demolition_Planing_Tool.Command</FullClassName>
+    <ClientId>7a0ba196-1182-5a6e-975f-0775adf4705a</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application Demolition Planing Tool</Name>
+    <Assembly>C:\Users\Predator\OneDrive\Desktop\Engineering Informatics\Demolition Planing Tool\bin\Debug\Demolition Planing Tool.dll</Assembly>
+    <FullClassName>Demolition_Planing_Tool.App</FullClassName>
+    <ClientId>d9ff7930-86d4-5fb1-b943-3fa7fc12b750</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
