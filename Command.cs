@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using iText.Kernel.XMP.Impl;
 using System;
@@ -16,25 +17,61 @@ namespace Demolition_Planing_Tool
 
     public class CustomControl1 : IExternalCommand
     {
-        private static UIDocument uidoc;
-        private static Document doc;
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiApp = commandData.Application;
-            uidoc = uiApp.ActiveUIDocument;
-            doc = uidoc.Document;
+            UIDocument uidoc = uiApp.ActiveUIDocument;
+            Document doc = uidoc.Document;
+            ProjectInfo pi = doc.ProjectInformation;
 
+            // Get floors from Revit
+            ElementClassFilter familyInstanceFloor = new ElementClassFilter(typeof(Level));
+            ElementCategoryFilter floorCatergoryFilter = new ElementCategoryFilter(BuiltInCategory.OST_Levels);
+            LogicalAndFilter floorInstanceFilter = new LogicalAndFilter(familyInstanceFloor, floorCatergoryFilter);
             FilteredElementCollector collector = new FilteredElementCollector(doc);
-            ElementCategoryFilter filterFloor = new ElementCategoryFilter(BuiltInCategory.OST_Floors);
-            IList<Element> floorList = collector.WherePasses(filterFloor).WhereElementIsNotElementType().ToElements();
-            Debug.WriteLine(floorList.Count);
+            ICollection<Element> myFloors = collector.WherePasses(floorInstanceFilter).ToElements();
+            List<Level> floors = new List<Level>();
 
-            foreach (Element floor in floorList)
+            foreach (Element floor in myFloors)
             {
-                Debug.WriteLine(floor.ToString());
+                if (floor is Level)
+                {
+                    floors.Add(floor as Level);
+                }
             }
-            Building b = new Building("", "", "", "", floorList.Count, 0);
-            ComputeForm dialog = new ComputeForm(b, floorList.Count);
+
+            // Get Rooms from all Floors
+            List<List<Autodesk.Revit.DB.Architecture.Room>> allRooms = new List<List<Autodesk.Revit.DB.Architecture.Room>>();
+            int maxRoomCount = 0;
+
+            foreach (Element floor in myFloors)
+            {
+                ElementId levelId = floor.Id;
+
+                ElementLevelFilter levelFilter = new ElementLevelFilter(levelId);
+                FilteredElementCollector roomCollector = new FilteredElementCollector(doc);
+                IList<Element> allRoomsOnLevel = roomCollector.WherePasses(new RoomFilter()).WherePasses(levelFilter).ToElements();
+
+                List<Autodesk.Revit.DB.Architecture.Room> rooms = new List<Autodesk.Revit.DB.Architecture.Room>();
+                
+                foreach (Element room in allRoomsOnLevel)
+                {
+                    if (room is Autodesk.Revit.DB.Architecture.Room)
+                    {
+                        rooms.Add(room as Autodesk.Revit.DB.Architecture.Room);
+                        Debug.WriteLine(room.Id);
+                    }
+                }
+                Debug.WriteLine(levelId + " " + rooms.Count);
+                if (rooms.Count > maxRoomCount)
+                {
+                    maxRoomCount = rooms.Count;
+                }
+                allRooms.Add(rooms);
+            }
+            
+            Building b = new Building(pi.Name, "", "", "", floors.Count, maxRoomCount);
+            ComputeForm dialog = new ComputeForm(b, floors.Count);
             dialog.ShowDialog();
             return Result.Succeeded;
         }
