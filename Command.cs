@@ -59,17 +59,65 @@ namespace Demolition_Planing_Tool
                     if (room is Autodesk.Revit.DB.Architecture.Room)
                     {
                         rooms.Add(room as Autodesk.Revit.DB.Architecture.Room);
-                        Debug.WriteLine(room.Id);
+                        //Debug.WriteLine("roomId " + room.Id);
                     }
                 }
-                Debug.WriteLine(levelId + " " + rooms.Count);
+                //Debug.WriteLine("levelId " + levelId + " " + "room count " + rooms.Count);
                 if (rooms.Count > maxRoomCount)
                 {
                     maxRoomCount = rooms.Count;
                 }
                 allRooms.Add(rooms);
             }
-            
+
+            // Get walls will be assigned to floor
+            foreach (Element floor in myFloors)
+            {
+                ElementId levelId = floor.Id;
+
+                ElementLevelFilter levelFilter = new ElementLevelFilter(levelId);
+                collector = new FilteredElementCollector(doc);
+                ICollection<Element> allWallsOnLevel1 = collector.OfClass(typeof(Wall)).WherePasses(levelFilter).ToElements();
+
+                foreach (Element wall in allWallsOnLevel1)
+                {
+                    //Debug.WriteLine("Floor ID " + levelId + "Wall ID " + wall.Id);
+                }
+            }
+
+            // Get windows in each floor
+            foreach (Element floor in myFloors)
+            {
+                ElementId levelId = floor.Id;
+                ElementCategoryFilter windowsFilter = new ElementCategoryFilter(BuiltInCategory.OST_Windows);
+
+                ElementLevelFilter levelFilter = new ElementLevelFilter(levelId);
+                collector = new FilteredElementCollector(doc);
+                ICollection<Element> allWindowsOnLevel1 = collector.WherePasses(windowsFilter).WherePasses(levelFilter).ToElements();
+
+                foreach (Element window in allWindowsOnLevel1)
+                {
+                    Debug.WriteLine("Floor ID " + levelId + " window ID " + window.Id);
+                }
+            }
+
+            // Get doors in each floor
+            foreach (Element floor in myFloors)
+            {
+                ElementId levelId = floor.Id;
+                ElementCategoryFilter doorsFilter = new ElementCategoryFilter(BuiltInCategory.OST_Doors);
+                ElementLevelFilter levelFilter = new ElementLevelFilter(levelId);
+                collector = new FilteredElementCollector(doc);
+                ICollection<Element> allDoorsOnLevel1 = collector.WherePasses(doorsFilter).WherePasses(levelFilter).ToElements();
+
+                foreach (Element doors in allDoorsOnLevel1)
+                {
+                    Debug.WriteLine("Floor ID " + levelId + " doors" +
+                        " ID " + doors.Id);
+                }
+            }
+
+
             Building b = new Building(pi.Name, "", "", "", floors.Count, maxRoomCount);
             ComputeForm dialog = new ComputeForm(b, floors.Count);
             dialog.ShowDialog();
