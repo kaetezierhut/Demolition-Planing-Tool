@@ -12,10 +12,17 @@ namespace Demolition_Planing_Tool
     {
         private List<Waste> floorWaste;
         private List<Room> rooms;
+        private string floorIdRevit;
         public Floor()
         {
             rooms = new List<Room>();
             floorWaste = new List<Waste>();
+        }
+
+        public string FloorIdRevit
+        {
+            get { return floorIdRevit; }
+            set { floorIdRevit = value; }
         }
 
         // Computing coists for the floor

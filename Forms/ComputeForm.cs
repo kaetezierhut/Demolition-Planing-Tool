@@ -23,7 +23,7 @@ namespace Demolition_Planing_Tool
         private bool load;
         // This List is reponsible for added waste,
         // Index on this List correspondes to the index on listBox
-        private List<Waste> itemBox = new List<Waste>();
+        public List<Waste> itemBox = new List<Waste>();
 
 
         public ComputeForm(Building building, int numberOfFloors, bool load = false)
@@ -87,7 +87,7 @@ namespace Demolition_Planing_Tool
             }
         }
 
-        private void UpdateListBox(string wasteID, dynamic floorIndex, dynamic roomIndex,
+        public void UpdateListBox(string wasteID, dynamic floorIndex, dynamic roomIndex,
             dynamic quantities, dynamic billingPerUnit, string Unit, dynamic Hazardous, dynamic billing)
         {
             // Render the ListBox

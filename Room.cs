@@ -11,8 +11,11 @@ namespace Demolition_Planing_Tool
     public class Room
     {
         private List<Waste> roomWaste;
+        private string roomIdRevit;
 
         public Room() { roomWaste = new List<Waste>(); }
+
+        public string RoomIdRevit { get { return roomIdRevit; } set { roomIdRevit = value; } }
 
         // Computing the cost of the room
         public double ComputeBillingRoom()
