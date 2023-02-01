@@ -31,8 +31,8 @@ namespace Demolition_Planing_Tool
             //set the icon of button
             string ButtonIconsFolder = Path.GetDirectoryName(thisAssemblyPath); //path: the loaction is ../bin/Debug folder
 
-            myButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "tiger_35x35.png"), UriKind.Absolute)); //choose the .png with pixel 35x35. The size of the pixel is more appropriate
-
+            //myButton.LargeImage = new BitmapImage(new Uri(Path.Combine(ButtonIconsFolder, "tiger_35x35.png"), UriKind.Absolute)); //choose the .png with pixel 35x35. The size of the pixel is more appropriate
+            //Bild in den bin-debug ordner drin haben, da wo auch das ganze dll zeug abliegt (bei der Fork)
             myButton.ToolTip = "Click to get the tiger image"; //tip of button
 
             return Result.Succeeded;

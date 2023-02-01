@@ -141,7 +141,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Building.cs" />
-    <Compile Include="Command.cs" />
+    <Compile Include="CustomControl1.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="Forms\ComputeForm.cs">
       <SubType>Form</SubType>
